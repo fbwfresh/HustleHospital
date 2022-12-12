@@ -1,0 +1,33 @@
+# Default ignored files
+/shelf/
+/workspace.xml
+# Datasource local storage ignored files\
+/aws.xml
+/dataSources/
+/dataSources.local.xml
+# Editor-based HTTP Client requests
+/httpRequests/
+
+node_modules
+dist
+
+# Ignore Gradle project-specific cache directory
+.gradle
+
+.idea
+.vscode
+
+# Ignore Gradle build output directory
+build
+
+.project
+.settings
+
+invoke/*.json
+
+/aws.xml
+/Solution/src/main/.aws-sam/
+/Application/src/main/.aws-sam/
+/Solution/out.yml
+/Solution/bucket-name.txt
+/Application/out.yml
