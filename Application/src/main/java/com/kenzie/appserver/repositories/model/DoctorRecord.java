@@ -12,11 +12,11 @@ public class DoctorRecord {
         private boolean isActive;
 
         @DynamoDBHashKey(attributeName = "DoctorId")
-        public String getPatientId() {
+        public String getDoctorId() {
             return doctorId;
         }
 
-        public void setPatientId(String patientId) {
+        public void setDoctorId(String patientId) {
             this.doctorId = patientId;
         }
 
