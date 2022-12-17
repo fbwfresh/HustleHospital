@@ -13,7 +13,7 @@ import java.net.URI;
     @RestController
     @RequestMapping("/doctor")
     public class DoctorController {
-        private DoctorService doctorService;
+        private final DoctorService doctorService;
 
         DoctorController(DoctorService doctorService) {
             this.doctorService = doctorService;
