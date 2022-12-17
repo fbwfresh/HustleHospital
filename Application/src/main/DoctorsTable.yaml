@@ -1,0 +1,14 @@
+Resources:
+  DoctorsTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      "AttributeDefinitions":
+        - "AttributeName": "DoctorId"
+          "AttributeType": "S"
+      "KeySchema":
+        - "AttributeName": "PatientId"
+          "KeyType": "HASH"
+      PointInTimeRecoverySpecification:
+        PointInTimeRecoveryEnabled: false
+      BillingMode: PAY_PER_REQUEST
+      TableName: "Doctors"

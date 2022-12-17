@@ -2,28 +2,13 @@ package com.kenzie.appserver.controller;
 
 import com.kenzie.appserver.controller.model.DoctorCreateRequest;
 import com.kenzie.appserver.controller.model.DoctorResponse;
+import com.kenzie.appserver.service.DoctorService;
 import com.kenzie.appserver.service.model.Doctor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 
-//    package com.kenzie.appserver.controller;
-//
-//import com.kenzie.appserver.controller.model.ExampleCreateRequest;
-//import com.kenzie.appserver.controller.model.ExampleResponse;
-//import com.kenzie.appserver.controller.model.PatientCreateRequest;
-//import com.kenzie.appserver.controller.model.PatientResponse;
-//import com.kenzie.appserver.service.ExampleService;
-//import com.kenzie.appserver.service.PatientService;
-//import com.kenzie.appserver.service.model.Example;
-//import com.kenzie.appserver.service.model.Patient;
-//import org.springframework.http.ResponseEntity;
-//import org.springframework.web.bind.annotation.*;
-//
-//import java.net.URI;
-//
-//import static java.util.UUID.randomUUID;
 
     @RestController
     @RequestMapping("/doctor")
