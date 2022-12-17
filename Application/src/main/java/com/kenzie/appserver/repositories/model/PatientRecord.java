@@ -21,7 +21,7 @@ public class PatientRecord {
         this.patientId = patientId;
     }
 
-    @DynamoDBRangeKey(attributeName = "Name")
+    @DynamoDBAttribute(attributeName = "Name")
     public String getName() {
         return name;
     }

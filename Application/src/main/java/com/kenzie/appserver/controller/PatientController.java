@@ -24,7 +24,7 @@ public class PatientController {
         this.patientService = patientService;
     }
 
-    @GetMapping("/{name}")
+    @GetMapping("/{patientId}")
     public ResponseEntity<PatientResponse> get(@PathVariable("patientId") String patientId) {
 
         Patient patient = patientService.findById(patientId);
@@ -43,6 +43,7 @@ public class PatientController {
     @PostMapping
     public ResponseEntity<PatientResponse> addNewPatient(@RequestBody PatientCreateRequest patientCreateRequest) {
         Patient patient = new Patient(
+                randomUUID().toString(),
                 patientCreateRequest.getName(),
                 patientCreateRequest.getDob(),
                 patientCreateRequest.isInsurance());
@@ -54,6 +55,6 @@ public class PatientController {
         patientResponse.setDob(patient.getDob());
         patientResponse.setInsurance(patient.isInsurance());
 
-        return ResponseEntity.created(URI.create("/patient/" + patientResponse.getName())).body(patientResponse);
+        return ResponseEntity.created(URI.create("/patient/" + patientResponse.getPatientId())).body(patientResponse);
     }
 }

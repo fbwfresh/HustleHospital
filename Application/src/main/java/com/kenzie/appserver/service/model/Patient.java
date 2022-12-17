@@ -8,8 +8,9 @@ public class Patient {
     private final String dob;
     private final boolean insurance;
 
-    public Patient(String name, String dob, boolean insurance) {
-        this.patientId = randomUUID().toString();
+    public Patient(String patientId, String name, String dob, boolean insurance) {
+//        this.patientId = randomUUID().toString();
+        this.patientId = patientId;
         this.name = name;
         this.dob = dob;
         this.insurance = insurance;

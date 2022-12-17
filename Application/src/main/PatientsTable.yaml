@@ -5,13 +5,9 @@ Resources:
       "AttributeDefinitions":
         - "AttributeName": "PatientId"
           "AttributeType": "S"
-        - "AttributeName": "Name"
-          "AttributeType": "S"
       "KeySchema":
         - "AttributeName": "PatientId"
           "KeyType": "HASH"
-        - "AttributeName": "Name"
-          "KeyType": "RANGE"
       PointInTimeRecoverySpecification:
         PointInTimeRecoveryEnabled: false
       BillingMode: PAY_PER_REQUEST

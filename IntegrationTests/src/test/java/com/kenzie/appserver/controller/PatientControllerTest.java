@@ -37,15 +37,17 @@ public class PatientControllerTest {
 
     @Test
     public void getById_Exists() throws Exception {
-//        String id = UUID.randomUUID().toString();
+        String patientId = UUID.randomUUID().toString();
         String name = mockNeat.strings().valStr();
         String dob = mockNeat.strings().valStr();
         boolean insurance = true;
 
-        Patient patient = new Patient(name, dob, insurance);
+        Patient patient = new Patient(patientId, name, dob, insurance);
         Patient persistedPatient = patientService.addNewPatient(patient);
-        mvc.perform(get("/patient/{name}", persistedPatient.getName())
+        mvc.perform(get("/patient/{patientId}", persistedPatient.getPatientId())
                         .accept(MediaType.APPLICATION_JSON))
+                .andExpect(jsonPath("patientId")
+                        .value(is(patientId)))
                 .andExpect(jsonPath("name")
                         .value(is(name)))
                 .andExpect(jsonPath("dob")

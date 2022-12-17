@@ -6,27 +6,29 @@ import javax.validation.constraints.NotEmpty;
 
 public class PatientCreateRequest {
 
-    @NotEmpty
-    @JsonProperty("patientId")
-    private String patientId;
+//    @NotEmpty
+//    @JsonProperty("patientId")
+//    private String patientId;
 
     @NotEmpty
     @JsonProperty("name")
     private String name;
 
+    @NotEmpty
     @JsonProperty("dob")
     private String dob;
 
+    @NotEmpty
     @JsonProperty("insurance")
     private boolean insurance;
 
-    public String getPatientId() {
-        return patientId;
-    }
-
-    public void setPatientId(String patientId) {
-        this.patientId = patientId;
-    }
+//    public String getPatientId() {
+//        return patientId;
+//    }
+//
+//    public void setPatientId(String patientId) {
+//        this.patientId = patientId;
+//    }
 
     public String getName() {
         return name;

@@ -19,7 +19,7 @@ public class PatientService {
     public Patient findById(String patientId) {
         Patient patientFromBackend = patientRepository
                 .findById(patientId)
-                .map(patient -> new Patient(patient.getName(), patient.getDob(), patient.isInsurance()))
+                .map(patient -> new Patient(patient.getPatientId(), patient.getName(), patient.getDob(), patient.isInsurance()))
                 .orElse(null);
 
         return patientFromBackend;
