@@ -6,7 +6,7 @@ public class Doctor {
     private final String doctorId;
     private final String dob;
     private boolean isActive;
-    private List<Patient> patientList;
+    //private List<Patient> patientList;
 
     public Doctor(String name,String dob, boolean isActive){
         this.name = name;

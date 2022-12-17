@@ -16,8 +16,8 @@ public class DoctorRecord {
             return doctorId;
         }
 
-        public void setDoctorId(String patientId) {
-            this.doctorId = patientId;
+        public void setDoctorId(String doctorId) {
+            this.doctorId = doctorId;
         }
 
         @DynamoDBAttribute(attributeName = "Name")
