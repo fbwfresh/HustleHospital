@@ -17,19 +17,19 @@ public class AppointmentService {
         public AppointmentService(AppointmentRepository appointmentRepository) { this.appointmentRepository = appointmentRepository; }
 
         public Appointment findByPatientId(String patientId) {
-            Appointment commentFromBackend = appointmentRepository
+            Appointment appointmentFromBackend = appointmentRepository
                     .findById(patientId)
                     .map(appointment -> new Appointment(appointment.getPatientId(), appointment.getDoctorId(), appointment.getDate(), appointment.getAppointmentDescription()) )
                     .orElse(null);
-            return commentFromBackend;
+            return appointmentFromBackend;
         }
 
     public Appointment findByDoctorId(String doctorId) {
-        Appointment commentFromBackend = appointmentRepository
+        Appointment appointmentFromBackend = appointmentRepository
                 .findById(doctorId)
                 .map(appointment -> new Appointment(appointment.getPatientId(), appointment.getDoctorId(), appointment.getDate(), appointment.getAppointmentDescription()) )
                 .orElse(null);
-        return commentFromBackend;
+        return appointmentFromBackend;
     }
 
         public List<Appointment> findAll() {
