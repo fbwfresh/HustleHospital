@@ -16,7 +16,7 @@ public class DoctorCreateRequest {
     @NotEmpty
     @JsonProperty("dob")
     private String dob;
-
+    @NotEmpty
     @JsonProperty("isActive")
     private boolean isActive;
 
