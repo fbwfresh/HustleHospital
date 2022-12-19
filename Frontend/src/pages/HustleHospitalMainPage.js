@@ -31,6 +31,7 @@ class HustleHospitalMainPage extends BaseClass {
         let resultArea = document.getElementById("result-info");
 
     //todo: Not sure what dataStore.get(example) means
+    //get its from the basically a database from the document
         const example = this.dataStore.get("example");
         if (example) {
             resultArea.innerHTML = `
@@ -49,10 +50,10 @@ async onGet(event) {
         event.preventDefault();
 
         let id = document.getElementById("id-field").value;
-        this.dataStore.set("example", null);
+        this.dataStore.set("Patient", null);
 
         let result = await this.client.getExample(id, this.errorHandler);
-        this.dataStore.set("example", result);
+        this.dataStore.set("Patient", result);
         if (result) {
             this.showMessage(`Got ${result.name}!`)
         } else {
@@ -63,14 +64,14 @@ async onGet(event) {
     async onCreate(event) {
         // Prevent the page from refreshing on form submit
         event.preventDefault();
-        this.dataStore.set("example", null);
+        this.dataStore.set("Doctor", null);
 
         let name = document.getElementById("create-name-field").value;
+        //TODO: change the method in client
+        const createdDoctor = await this.client.createExample(name, this.errorHandler);
+        this.dataStore.set("Doctor", createdDoctor);
 
-        const createdExample = await this.client.createExample(name, this.errorHandler);
-        this.dataStore.set("example", createdExample);
-
-        if (createdExample) {
+        if (createdDoctor) {
             this.showMessage(`Created ${createdExample.name}!`)
         } else {
             this.errorHandler("Error creating!  Try again...");

@@ -27,7 +27,6 @@ import java.net.URI;
             if (doctor == null) {
                 return ResponseEntity.notFound().build();
             }
-
             DoctorResponse doctorResponse = new DoctorResponse();
             doctorResponse.setDoctorId(doctor.getDoctorId());
             doctorResponse.setName(doctor.getName());
@@ -42,21 +41,20 @@ import java.net.URI;
                     doctorCreateRequest.getDob(),
                     doctorCreateRequest.isActive());
             doctorService.addNewDoctor(doctor);
-
             DoctorResponse doctorResponse = new DoctorResponse();
             doctorResponse.setDoctorId(doctor.getDoctorId());
             doctorResponse.setName(doctor.getName());
             doctorResponse.setDob(doctor.getDob());
             doctorResponse.setActive(doctor.isActive());
-            //This creates the endpoint
+            //Creates the endpoint
             return ResponseEntity.created(URI.create("/doctor/" + doctorResponse.getDoctorId())).body(doctorResponse);
         }
         @DeleteMapping("/{doctorId}")
         public ResponseEntity removeDoctor(@PathVariable("doctorId") String doctorId){
-            doctorService.removeDoctor(doctorService.findById(doctorId));
-            if(doctorService.findById(doctorId) != null){
+            if(doctorService.findById(doctorId) == null){
                 return ResponseEntity.badRequest().build();
             }
+            doctorService.removeDoctor(doctorService.findById(doctorId));
             return ResponseEntity.noContent().build();
         }
 
