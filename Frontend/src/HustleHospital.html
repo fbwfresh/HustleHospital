@@ -19,10 +19,17 @@
                 <input type="text" required class="validated-field" id="add-name-field">
                 <label>DOB</label>
                 <input type="text" required class="validated-field" id="add-dob-field">
+                <label for="insurance">Is Patient Insured:</label>
+                <select name="insurance" id="insurance">
+                    <option value="null"></option>
+                    <option value="Insured">Insured</option>
+                    <option value="No Insurance">Not Insured</option>
+                </select>
             </p>
             <button type="submit">Submit</button>
         </form>
     </div>
+
 <div class="newDoctorCard">
     <h2>Input New Doctor</h2>
     <form class="card-content" id="create-doctorForm">
@@ -33,6 +40,7 @@
             <input type="text" required class="validated-field" id="add-doctor-dob-field">
             <label for="active">Is Doctor Active:</label>
             <select name="active" id="active">
+                <option value="null"></option>
                 <option value="Active">Active</option>
                 <option value="Inactive">Inactive</option>
             </select>
@@ -42,5 +50,4 @@
 </div>
 
 </body>
-
 </html>

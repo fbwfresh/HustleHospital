@@ -4,6 +4,7 @@ import com.kenzie.appserver.controller.model.DoctorCreateRequest;
 import com.kenzie.appserver.controller.model.DoctorResponse;
 import com.kenzie.appserver.service.DoctorService;
 import com.kenzie.appserver.service.model.Doctor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -47,7 +48,16 @@ import java.net.URI;
             doctorResponse.setName(doctor.getName());
             doctorResponse.setDob(doctor.getDob());
             doctorResponse.setActive(doctor.isActive());
-
-            return ResponseEntity.created(URI.create("/doctor/" + doctorResponse.getName())).body(doctorResponse);
+            //This creates the endpoint
+            return ResponseEntity.created(URI.create("/doctor/" + doctorResponse.getDoctorId())).body(doctorResponse);
         }
+        @DeleteMapping("/{doctorId}")
+        public ResponseEntity removeDoctor(@PathVariable("doctorId") String doctorId){
+            doctorService.removeDoctor(doctorService.findById(doctorId));
+            if(doctorService.findById(doctorId) != null){
+                return ResponseEntity.badRequest().build();
+            }
+            return ResponseEntity.noContent().build();
+        }
+
     }
