@@ -1,0 +1,18 @@
+Resources:
+  AppointmentsTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      "AttributeDefinitions":
+        - "AttributeName": "PatientId"
+          "AttributeType": "S"
+        - "AttributeName": "DoctorId"
+          "AttributeType": "S"
+      "KeySchema":
+        - "AttributeName": "PatientId"
+          "KeyType": "HASH"
+        - "AttributeName": "DoctorId"
+          "KeyType": "RANGE"
+      PointInTimeRecoverySpecification:
+        PointInTimeRecoveryEnabled: false
+      BillingMode: PAY_PER_REQUEST
+      TableName: "Appointments"
