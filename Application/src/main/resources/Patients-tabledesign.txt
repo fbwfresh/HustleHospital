@@ -1,0 +1,4 @@
+// Patients
+name // partition key, string
+dob // string
+insurance // boolean
