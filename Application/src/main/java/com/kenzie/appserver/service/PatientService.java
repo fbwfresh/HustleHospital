@@ -1,12 +1,13 @@
 package com.kenzie.appserver.service;
 
-import com.kenzie.appserver.repositories.ExampleRepository;
 import com.kenzie.appserver.repositories.PatientRepository;
-import com.kenzie.appserver.repositories.model.ExampleRecord;
 import com.kenzie.appserver.repositories.model.PatientRecord;
-import com.kenzie.appserver.service.model.Example;
 import com.kenzie.appserver.service.model.Patient;
 import org.springframework.stereotype.Service;
+
+//import static org.apache.commons.lang3.time.FastDateFormat.cache;
+
+//import static org.apache.commons.lang3.time.FastDateFormat.cache;
 
 @Service
 public class PatientService {
@@ -34,4 +35,5 @@ public class PatientService {
         patientRepository.save(patientRecord);
         return patient;
     }
+
 }

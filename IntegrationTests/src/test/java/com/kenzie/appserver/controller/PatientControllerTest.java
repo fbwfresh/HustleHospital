@@ -3,11 +3,8 @@ package com.kenzie.appserver.controller;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.kenzie.appserver.IntegrationTest;
-import com.kenzie.appserver.controller.model.ExampleCreateRequest;
 import com.kenzie.appserver.controller.model.PatientCreateRequest;
-import com.kenzie.appserver.service.ExampleService;
 import com.kenzie.appserver.service.PatientService;
-import com.kenzie.appserver.service.model.Example;
 import com.kenzie.appserver.service.model.Patient;
 import net.andreinc.mockneat.MockNeat;
 import org.junit.jupiter.api.Test;
@@ -18,6 +15,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import java.util.UUID;
 
 import static org.hamcrest.Matchers.is;
+import static org.springframework.http.RequestEntity.put;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -76,4 +74,5 @@ public class PatientControllerTest {
 //                        .value(is(name)))
                 .andExpect(status().isCreated());
     }
+
 }
