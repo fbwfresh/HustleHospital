@@ -9,6 +9,7 @@ module.exports = {
   },
   entry: {
     examplePage: path.resolve(__dirname, 'src', 'pages', 'examplePage.js'),
+    HustleHospitalMainPage: path.resolve(__dirname, 'src', 'pages', 'HustleHospitalMainPage.js'),
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -25,12 +26,18 @@ module.exports = {
     // overlay shows a full-screen overlay in the browser when there are compiler errors or warnings
     overlay: true
   },
+
   plugins: [
     new HtmlWebpackPlugin({
       template: './src/index.html',
       filename: 'index.html',
       inject: false
     }),
+    new HtmlWebpackPlugin({
+          template: './src/HustleHospital.html',
+          filename: 'HustleHospital.html',
+          inject: false
+        }),
     new CopyPlugin({
       patterns: [
         {
