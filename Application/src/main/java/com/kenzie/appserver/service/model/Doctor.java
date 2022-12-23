@@ -3,8 +3,8 @@ package com.kenzie.appserver.service.model;
 import java.util.*;
 public class Doctor {
     private String name;
-    private final String doctorId;
-    private final String dob;
+    private String doctorId;
+    private String dob;
     private boolean isActive;
     //private List<Patient> patientList;
 
@@ -29,6 +29,9 @@ public class Doctor {
 
     public String getDob() {
         return dob;
+    }
+    public void setDoctorId(String doctorId){
+        this.doctorId = doctorId;
     }
 
     public boolean isActive() {

@@ -4,6 +4,9 @@ import com.kenzie.appserver.repositories.DoctorRepository;
 import com.kenzie.appserver.repositories.model.DoctorRecord;
 import com.kenzie.appserver.service.model.Doctor;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
+
 @Service
 public class DoctorService {
         private DoctorRepository doctorRepository;
@@ -34,4 +37,17 @@ public class DoctorService {
         public void removeDoctor(Doctor doctor){
             doctorRepository.deleteById(doctor.getDoctorId());
         }
+
+    public void updateDoctor(Doctor doctor) {
+        if (doctorRepository.existsById(doctor.getDoctorId())) {
+            DoctorRecord doctorRecord = new DoctorRecord();
+            doctorRecord.setActive(doctor.isActive());
+            doctorRecord.setDob(doctor.getDob());
+            doctorRecord.setDoctorId(doctor.getDoctorId());
+            doctorRecord.setName(doctor.getName());
+
+            doctorRepository.save(doctorRecord);
+        }
+
+    }
 }
