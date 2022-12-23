@@ -1,9 +1,6 @@
 package com.kenzie.appserver.controller;
 
-import com.kenzie.appserver.controller.model.ExampleCreateRequest;
-import com.kenzie.appserver.controller.model.ExampleResponse;
-import com.kenzie.appserver.controller.model.PatientCreateRequest;
-import com.kenzie.appserver.controller.model.PatientResponse;
+import com.kenzie.appserver.controller.model.*;
 import com.kenzie.appserver.service.ExampleService;
 import com.kenzie.appserver.service.PatientService;
 import com.kenzie.appserver.service.model.Example;
@@ -57,4 +54,28 @@ public class PatientController {
 
         return ResponseEntity.created(URI.create("/patient/" + patientResponse.getPatientId())).body(patientResponse);
     }
+
+    @PutMapping
+    public ResponseEntity<PatientResponse> updatePatient(@RequestBody PatientUpdateRequest patientUpdateRequest) {
+        Patient patient = new Patient(patientUpdateRequest.getPatientId(),
+                patientUpdateRequest.getName(),
+                patientUpdateRequest.getDob(),
+                patientUpdateRequest.isInsurance());
+
+        patientService.updatePatient(patient);
+
+        PatientResponse patientResponse = createPatientResponse(patient);
+
+        return ResponseEntity.ok(patientResponse);
+    }
+
+    private PatientResponse createPatientResponse(Patient patient) {
+        PatientResponse patientResponse = new PatientResponse();
+        patientResponse.setPatientId(patient.getPatientId());
+        patientResponse.setName(patient.getName());
+        patientResponse.setDob(patient.getDob());
+        patientResponse.setInsurance(patient.isInsurance());
+        return patientResponse;
+    }
+
 }
