@@ -34,4 +34,16 @@ public class PatientService {
         patientRepository.save(patientRecord);
         return patient;
     }
+
+    public void updatePatient(Patient patient) {
+        if (patientRepository.existsById(patient.getPatientId())) {
+            PatientRecord patientRecord = new PatientRecord();
+            patientRecord.setPatientId(patient.getPatientId());
+            patientRecord.setDob(patient.getDob());
+            patientRecord.setName(patient.getName());
+            patientRecord.setInsurance(patient.isInsurance());
+            patientRepository.save(patientRecord);
+        }
+//        cache.evict(patient.getPatientId());
+    }
 }

@@ -5,6 +5,7 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.kenzie.appserver.IntegrationTest;
 import com.kenzie.appserver.controller.model.ExampleCreateRequest;
 import com.kenzie.appserver.controller.model.PatientCreateRequest;
+import com.kenzie.appserver.controller.model.PatientUpdateRequest;
 import com.kenzie.appserver.service.ExampleService;
 import com.kenzie.appserver.service.PatientService;
 import com.kenzie.appserver.service.model.Example;
@@ -75,5 +76,45 @@ public class PatientControllerTest {
 //                .andExpect(jsonPath("name")
 //                        .value(is(name)))
                 .andExpect(status().isCreated());
+    }
+
+    @Test
+    public void updatePatient_PutSuccessful() throws Exception {
+        // GIVEN
+        String patientId = UUID.randomUUID().toString();
+        String name = mockNeat.strings().valStr();
+        String dob = mockNeat.strings().valStr();
+        boolean insurance = true;
+
+        Patient patient = new Patient(patientId, name, dob, insurance);
+        Patient persistedPatient = patientService.addNewPatient(patient);
+
+        String newName = mockNeat.strings().valStr();
+
+
+        PatientUpdateRequest patientUpdateRequest = new PatientUpdateRequest();
+        patientUpdateRequest.setPatientId(patientId);
+        patientUpdateRequest.setName(newName);
+        patientUpdateRequest.setDob(dob);
+        patientUpdateRequest.setInsurance(insurance);
+
+
+        mapper.registerModule(new JavaTimeModule());
+
+        // WHEN
+//        mvc.perform(put("/patient")
+//                        .accept(MediaType.APPLICATION_JSON)
+//                        .contentType(MediaType.APPLICATION_JSON)
+//                        .content(mapper.writeValueAsString(patientUpdateRequest)))
+//                // THEN
+//                .andExpect(jsonPath("patientId")
+//                        .exists())
+//                .andExpect(jsonPath("name")
+//                        .value(is(newName)))
+//                .andExpect(jsonPath("dob")
+//                        .value(is(dob)))
+//                .andExpect(jsonPath("insurance")
+//                        .value(is(true)))
+//                .andExpect(status().isOk());
     }
 }
