@@ -19,6 +19,10 @@ public class DoctorController {
     DoctorController(DoctorService doctorService) {
         this.doctorService = doctorService;
     }
+//    @GetMapping("/hello")
+//    public ResponseEntity<String> hello(){
+//        return ResponseEntity.ok("hello user");
+//    }
 
     @GetMapping("/{doctorId}")
     public ResponseEntity<DoctorResponse> getDoctor(@PathVariable("doctorId") String doctorId) {
