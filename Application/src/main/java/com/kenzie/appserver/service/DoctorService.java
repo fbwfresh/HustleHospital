@@ -24,14 +24,14 @@ public class DoctorService {
             return doctorBeingRetrieved;
         }
 
-        public Doctor addNewDoctor(Doctor doctor) {
+        public DoctorRecord addNewDoctor(Doctor doctor) {
             DoctorRecord doctorRecord = new DoctorRecord();
             doctorRecord.setDoctorId(doctorRecord.getDoctorId());
             doctorRecord.setName(doctor.getName());
             doctorRecord.setDob(doctor.getDob());
             doctorRecord.setActive(doctor.isActive());
             doctorRepository.save(doctorRecord);
-            return doctor;
+            return doctorRecord;
         }
 
         public void removeDoctor(Doctor doctor){
@@ -48,6 +48,5 @@ public class DoctorService {
 
             doctorRepository.save(doctorRecord);
         }
-
     }
 }

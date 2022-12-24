@@ -6,7 +6,7 @@ public class Doctor {
     private String doctorId;
     private String dob;
     private boolean isActive;
-    //private List<Patient> patientList;
+  //  private List<Patient> patientList = new ArrayList<>();
 
     public Doctor(String name,String dob, boolean isActive){
         this.name = name;
