@@ -6,7 +6,7 @@
 }
 
 .background {
-    background-color: #eaeded;
+    background-color: black;
     margin: 0;
     counter-reset: section;
 }
@@ -14,18 +14,18 @@
 .header {
     /* Flexbox: https://css-tricks.com/snippets/css/a-guide-to-flexbox/ */
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     background-color: var(--primary-color);
     color: var(--secondary-color);
     padding: 0 20px;
 }
 
-.header_home {
+.site-header {
     font-size: 36px;
     line-height: 40px;
     height: 100px;
-    text-decoration: none;
+    text-shadow: 1px 1px 2px red, 0 0 1em blue, 0 0 0.2em blue;
     color: var(--secondary-color);
 }
 
@@ -53,11 +53,23 @@
     background: #9cc3e4;
 }
 
-.card {
-    color: var(--primary-color);
-    background-color: var(--secondary-color);
-    margin: 20px;
-    padding: 10px 20px;
+.newPatientCard {
+    margin: auto;
+    width: 50%;
+    border: 3px solid green;
+    padding: 20px;
+    color: black;
+    background-color: silver;
+    text-align: center;
+}
+.newDoctorCard {
+    margin: auto;
+    width: 50%;
+    border: 3px solid green;
+    padding: 20px;
+    color: black;
+    background-color: silver;
+    text-align: center;
 }
 
 .validated-field:invalid {
@@ -68,12 +80,23 @@
 }
 
 .card-content {
-    max-width: 500px;
+    max-width: 250px;
 }
 
 .card-content .form-field {
+
+}
+.form-field {
     display: flex;
     flex-direction: column;
+    margin: auto;
+    width: 275%;
+    padding: 10px;
+}
+.doctorFormField {
+    margin: auto;
+    width: 275%;
+    padding: 10px;
 }
 
 #concert-list li {
