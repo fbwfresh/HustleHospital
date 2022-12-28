@@ -8,7 +8,7 @@ module.exports = {
     usedExports: true
   },
   entry: {
-    examplePage: path.resolve(__dirname, 'src', 'pages', 'examplePage.js'),
+    patientPage: path.resolve(__dirname, 'src', 'pages', 'patientPage.js'),
     HustleHospitalMainPage: path.resolve(__dirname, 'src', 'pages', 'HustleHospitalMainPage.js'),
     doctorPage: path.resolve(__dirname,'src','pages','doctorPage.js'),
   },
@@ -20,7 +20,7 @@ module.exports = {
     https: false,
     port: 8080,
     open: true,
-    openPage: 'http://localhost:8080/HustleHospital.html',
+    openPage: 'http://localhost:5001/HustleHospital.html',
     // diableHostChecks, otherwise we get an error about headers and the page won't render
     disableHostCheck: true,
     contentBase: 'packaging_additional_published_artifacts',
@@ -29,6 +29,11 @@ module.exports = {
   },
 
   plugins: [
+    new HtmlWebpackPlugin({
+        template: './src/patients.html',
+        filename: 'patients.html',
+        inject: false
+    }),
     new HtmlWebpackPlugin({
       template: './src/DoctorPage.html',
       filename: 'DoctorPage.html',
