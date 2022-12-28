@@ -88,6 +88,19 @@
     display: block;
 }
 
+/* -------------------------- */
+/*Modal CSS */
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html {
+    font-size: 62.5%;
+    box-sizing: border-box;
+}
+
 .show-modal {
     font-size: 2rem;
     font-weight: 600;
@@ -114,10 +127,12 @@
 h1 {
     font-size: 2.5rem;
     margin-bottom: 2rem;
+    color: #131921;
 }
 
 p {
     font-size: 1.8rem;
+    color: #131921;
 }
 
 /* -------------------------- */
@@ -125,7 +140,6 @@ p {
 .hidden {
     display: none;
 }
-
 
 .modal {
     position: absolute;
@@ -151,4 +165,3 @@ p {
     backdrop-filter: blur(3px);
     z-index: 5;
 }
-

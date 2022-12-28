@@ -66,11 +66,11 @@ this.onGetDoctors();
 
 const main = async () => {
     const doctorPage = new DoctorPage();
-    doctorPage.mount();
+    await doctorPage.mount();
     };
     window.addEventListener('DOMContentLoaded', main);
 
-    //Modal Appointment Note code below
+//Modal Appointment Note code below
 
 const modal = document.querySelector('.modal');
 const overlay = document.querySelector('.overlay');
