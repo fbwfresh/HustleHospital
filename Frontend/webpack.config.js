@@ -49,4 +49,5 @@ module.exports = {
     }),
     new CleanWebpackPlugin()
   ]
+
 }
