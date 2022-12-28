@@ -10,6 +10,7 @@ module.exports = {
   entry: {
     examplePage: path.resolve(__dirname, 'src', 'pages', 'examplePage.js'),
     HustleHospitalMainPage: path.resolve(__dirname, 'src', 'pages', 'HustleHospitalMainPage.js'),
+    doctorPage: path.resolve(__dirname,'src','pages','doctorPage.js'),
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -28,11 +29,11 @@ module.exports = {
   },
 
   plugins: [
-//    new HtmlWebpackPlugin({
-//      template: './src/index.html',
-//      filename: 'index.html',
-//      inject: false
-//    }),
+    new HtmlWebpackPlugin({
+      template: './src/DoctorPage.html',
+      filename: 'DoctorPage.html',
+      inject: false
+    }),
     new HtmlWebpackPlugin({
           template: './src/HustleHospital.html',
           filename: 'HustleHospital.html',
