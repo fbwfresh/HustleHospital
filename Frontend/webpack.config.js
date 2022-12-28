@@ -8,7 +8,11 @@ module.exports = {
     usedExports: true
   },
   entry: {
-    HustleHospitalPage: path.resolve(__dirname, 'src', 'pages', 'HustleHospitalPage.js'),
+
+    patientPage: path.resolve(__dirname, 'src', 'pages', 'patientPage.js'),
+    HustleHospitalMainPage: path.resolve(__dirname, 'src', 'pages', 'HustleHospitalMainPage.js'),
+    doctorPage: path.resolve(__dirname,'src','pages','doctorPage.js'),
+
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -18,19 +22,37 @@ module.exports = {
     https: false,
     port: 8080,
     open: true,
-    openPage: 'http://localhost:8080/HustleHospital.html',
+
+  
+
+    openPage: 'http://localhost:5001/HustleHospital.html',
+
     // diableHostChecks, otherwise we get an error about headers and the page won't render
     disableHostCheck: true,
     contentBase: 'packaging_additional_published_artifacts',
     // overlay shows a full-screen overlay in the browser when there are compiler errors or warnings
     overlay: true
   },
+
   plugins: [
     new HtmlWebpackPlugin({
-      template: './src/HustleHospital.html',
-      filename: 'HustleHospital.html',
+
+
+        template: './src/patients.html',
+        filename: 'patients.html',
+        inject: false
+    }),
+    new HtmlWebpackPlugin({
+      template: './src/DoctorPage.html',
+      filename: 'DoctorPage.html',
+
       inject: false
     }),
+    new HtmlWebpackPlugin({
+          template: './src/HustleHospital.html',
+          filename: 'HustleHospital.html',
+          inject: false
+        }),
     new CopyPlugin({
       patterns: [
         {
@@ -41,4 +63,5 @@ module.exports = {
     }),
     new CleanWebpackPlugin()
   ]
+
 }

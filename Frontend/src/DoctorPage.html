@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Doctor Page</title>
+  <script type="text/javascript" src="doctorPage.js"></script>
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+</head>
+<body>
+<div class="newDoctorCard">
+  <h2>Input New Doctor</h2>
+  <form class="card-content" id="create-doctorForm">
+    <p class="form-field">
+      <label>Name</label>
+      <input type="text" required class="validated-field" id="add-doctor-name-field">
+      <label>DOB</label>
+      <input type="text" required class="validated-field" id="add-doctor-dob-field">
+<!--      <label for="active">Is Doctor Active:</label>-->
+<!--      <select name="active" id="active">-->
+<!--        <option value="null"></option>-->
+<!--        <option value="Active">Active</option>-->
+<!--        <option value="Inactive">Inactive</option>-->
+<!--      </select>-->
+    </p>
+    <button type="submit">Submit</button>
+  </form>
+</div>
+<div class="card-content" id="result">
+  <h2>Result:</h2>
+  <p id="result-info"></p>
+</div>
+
+</body>
+</html>
