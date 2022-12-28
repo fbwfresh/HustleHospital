@@ -78,6 +78,16 @@ public class PatientControllerTest {
                 .andExpect(status().isCreated());
     }
 
+//    @Test
+//    public void helloDoctorEndpointTest_CreateSuccessful() throws Exception {
+//
+//        mvc.perform(get("/doctor/hello")
+//                        .accept(MediaType.APPLICATION_JSON)
+//                        .contentType(MediaType.APPLICATION_JSON))
+//                        .andExpect(status().isOk());
+//
+//    }
+
     @Test
     public void updatePatient_PutSuccessful() throws Exception {
         // GIVEN
@@ -88,7 +98,7 @@ public class PatientControllerTest {
 
         Patient patient = new Patient(patientId, name, dob, insurance);
         Patient persistedPatient = patientService.addNewPatient(patient);
-
+        Patient testPatient = patientService.findById(patientId);
         String newName = mockNeat.strings().valStr();
 
 

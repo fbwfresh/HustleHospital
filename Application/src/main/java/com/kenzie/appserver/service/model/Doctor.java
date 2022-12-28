@@ -6,13 +6,13 @@ public class Doctor {
     private String doctorId;
     private String dob;
     private boolean isActive;
-    //private List<Patient> patientList;
+  //  private List<Patient> patientList = new ArrayList<>();
 
-    public Doctor(String name,String dob, boolean isActive){
+    public Doctor(String name,String dob){
         this.name = name;
         this.dob = dob;
         doctorId = UUID.randomUUID().toString();
-        this.isActive = isActive;
+        this.isActive = true;
     }
 
     public String getName() {

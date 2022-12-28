@@ -5,6 +5,8 @@ import com.kenzie.appserver.repositories.model.DoctorRecord;
 import com.kenzie.appserver.service.model.Doctor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -18,20 +20,25 @@ public class DoctorService {
         public Doctor findById(String doctorId) {
             Doctor doctorBeingRetrieved = doctorRepository
                     .findById(doctorId)
-                    .map(doctor -> new Doctor(doctor.getName(), doctor.getDob(), doctor.isActive()))
+                    .map(doctor -> new Doctor(doctor.getName(), doctor.getDob()))
                     .orElse(null);
 
             return doctorBeingRetrieved;
         }
+        public List<Doctor> findAll(){
+            List<Doctor> doctors = new ArrayList<>();
+            doctorRepository.findAll().forEach(doctor -> doctors.add(new Doctor(doctor.getName(),doctor.getDob())));
+            return doctors;
+        }
 
-        public Doctor addNewDoctor(Doctor doctor) {
+        public DoctorRecord addNewDoctor(Doctor doctor) {
             DoctorRecord doctorRecord = new DoctorRecord();
             doctorRecord.setDoctorId(doctorRecord.getDoctorId());
             doctorRecord.setName(doctor.getName());
             doctorRecord.setDob(doctor.getDob());
             doctorRecord.setActive(doctor.isActive());
             doctorRepository.save(doctorRecord);
-            return doctor;
+            return doctorRecord;
         }
 
         public void removeDoctor(Doctor doctor){
@@ -48,6 +55,5 @@ public class DoctorService {
 
             doctorRepository.save(doctorRecord);
         }
-
     }
 }
