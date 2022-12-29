@@ -7,7 +7,7 @@ export default class PatientClient extends BaseClass {
             super();
 //            const methodsToBind = ['clientLoaded', 'getPatient', 'createPatient', 'getAllPatients'];
 //            const methodsToBind = ['clientLoaded', 'getPatient', 'createPatient'];
-            const methodsToBind = ['clientLoaded', 'createPatient'];
+            const methodsToBind = ['clientLoaded', 'createPatient', 'getAllPatients', 'getPatient'];
             this.bindClassMethods(methodsToBind, this);
             this.props = props;
             this.clientLoaded(axios);
@@ -18,26 +18,28 @@ export default class PatientClient extends BaseClass {
             this.props.onReady();
         }
     }
-//    async getPatient(patientId, errorCallback) {
-//            try {
-//                const response = await this.client.get(`/patient/${patientId}`);
-//                return response.data;
-//            } catch (error) {
-//                this.handleError("getPatient", error, errorCallback)
-//            }
-//        }
-//    async getAllPatients(errorCallback) {
-//        try {
-//            const response = await this.client.get(`/patient/all`);
-//            return response.data;
-//        } catch (error) {
-//            this.handleError("getAllPatients", error, errorCallback);
-//        }
-//    }
-    async createPatient(name, errorCallback) {
+    async getPatient(patientId, errorCallback) {
+            try {
+                const response = await this.client.get(`/patient/${patientId}`);
+                return response.data;
+            } catch (error) {
+                this.handleError("getPatient", error, errorCallback)
+            }
+        }
+    async getAllPatients(errorCallback) {
         try {
-            const response = await this.client.post(`patient`, {
-                name: name
+            const response = await this.client.get(`/patient/all`);
+            return response.data;
+        } catch (error) {
+            this.handleError("getAllPatients", error, errorCallback);
+        }
+    }
+    async createPatient(name, dob, insurance, errorCallback) {
+        try {
+            const response = await this.client.post(`/patient`, {
+                "name": name,
+                "dob": dob,
+                "insurance": insurance
             });
             return response.data;
         } catch (error) {

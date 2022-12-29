@@ -9,6 +9,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import static java.util.UUID.randomUUID;
 
@@ -35,6 +37,25 @@ public class PatientController {
         patientResponse.setDob(patient.getDob());
         patientResponse.setInsurance(patient.isInsurance());
         return ResponseEntity.ok(patientResponse);
+    }
+
+    @GetMapping("/all")
+    public ResponseEntity<List<PatientResponse>> getPatient() {
+
+        List<Patient> patients = patientService.findAll();
+
+        List<PatientResponse> responses = patients.stream().map(patient -> patientToResponse(patient)).collect(Collectors.toList());
+
+        return ResponseEntity.ok(responses);
+    }
+
+    private PatientResponse patientToResponse(Patient patient) {
+        PatientResponse patientResponse = new PatientResponse();
+        patientResponse.setPatientId(patient.getPatientId());
+        patientResponse.setName(patient.getName());
+        patientResponse.setDob(patient.getDob());
+        patientResponse.setInsurance(patient.isInsurance());
+        return patientResponse;
     }
 
     @PostMapping
