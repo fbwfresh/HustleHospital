@@ -1,0 +1,41 @@
+:root {
+    /* css variables: https://developer.mozilla.org/en-US/docs/Web/CSS/var */
+    --primary-color: #131921;
+    --secondary-color: #fff;
+    --error-color: rgba(194, 0, 0, 0.71);
+}
+.background {
+    background-color: teal;
+    margin: 0;
+    counter-reset: section;
+}
+.newDoctorCard {
+    margin: auto;
+    width: 50%;
+    border: 3px solid black;
+    padding: 20px;
+    color: blue;
+    background-color: gray;
+    text-align: center;
+}
+.validated-field:invalid {
+    outline: 2px solid blue;
+}
+.validated-field:focus:invalid {
+    color: var(--error-color);
+}
+
+.card-content {
+    max-width: 50%;
+}
+
+.card-content .form-field {
+
+}
+.form-field {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    width: 200%;
+    padding: 10px;
+}

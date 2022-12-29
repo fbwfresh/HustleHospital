@@ -33,7 +33,7 @@ public class DoctorService {
 
         public DoctorRecord addNewDoctor(Doctor doctor) {
             DoctorRecord doctorRecord = new DoctorRecord();
-            doctorRecord.setDoctorId(doctorRecord.getDoctorId());
+            doctorRecord.setDoctorId(doctor.getDoctorId());
             doctorRecord.setName(doctor.getName());
             doctorRecord.setDob(doctor.getDob());
             doctorRecord.setActive(doctor.isActive());

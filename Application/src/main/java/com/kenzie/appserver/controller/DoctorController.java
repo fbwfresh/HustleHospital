@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 
@@ -50,7 +51,7 @@ public class DoctorController {
 
     }
 
-    @PostMapping//("/all") //changed this to all to test the endpoint
+    @PostMapping
     public ResponseEntity<DoctorResponse> addNewDoctor(@RequestBody DoctorCreateRequest doctorCreateRequest) {
         Doctor doctor = new Doctor(
                 doctorCreateRequest.getName(),

@@ -4,6 +4,7 @@ import axios from 'axios'
 //Client to call the doctorService
 export default class DoctorClient extends BaseClass {
 
+
     constructor(props ={}){
         super();
         const methodsToBind = ['clientLoaded','getDoctor','createDoctor','getAllDoctors'];
@@ -27,18 +28,17 @@ export default class DoctorClient extends BaseClass {
             this.handleError("getDoctor",error,errorCallback)
             }
     }
-
-    async createDoctor(name,dob,errorCallback){
+//this is different
+    async createDoctor(name, dob, errorCallback){
         try{
-            const response = await this.client.post(`/doctor`,{
-                "name": name,
-                //"doctorId": doctorId
-                "dob": dob
-                //"isActive": isActive
+            const response = await this.client.post(`doctor`, {
+                name: name,
+                dob: dob
                 });
+                console.log(response.data);
                 return response.data;
                 } catch (error) {
-                    this.handleError("createDoctor",error, errorCallback);
+                    this.handleError("createDoctor", error, errorCallback);
                 }
     }
     //have to make an endpoint in controller based off a service method to get all doctors
