@@ -6,6 +6,32 @@
   <script type="text/javascript" src="doctorPage.js"></script>
   <link rel="stylesheet" type="text/css" href="css/DoctorPage.css">
   <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+  <style>
+            table {
+                border-collapse: collapse;
+            }
+            th {
+                background-color:black;
+                Color:white;
+            }
+            th, td {
+                width:150px;
+                text-align:center;
+                border:1px solid black;
+                padding:5px
+
+            }
+            .geeks {
+                border-right:hidden;
+            }
+            .gfg {
+                border-collapse:separate;
+                border-spacing:0 15px;
+            }
+            h1 {
+                color:green;
+            }
+        </style>
 </head>
 <body class="background">
 <div class="newDoctorCard">
@@ -27,8 +53,15 @@
   </form>
 </div>
 <div class="card-content" id="result">
-  <h2>Result:</h2>
-  <p id="result-info"></p>
+
+  <table id="result-info">
+    <tr>
+      <th>Id</th>
+      <th>Dr.</th>
+      <th>DOB</th>
+      <th>IsActive</th>
+    </tr>
+  </table>
 </div>
 
 </body>

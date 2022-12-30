@@ -21,26 +21,17 @@ class DoctorPage extends BaseClass {
             }
 
         async renderDoctors(){
-            let resultArea = document.getElementById("result-info");
+
+            const table = document.getElementById("result-info");
 
             const doctors = this.dataStore.get("doctors");
-                if(doctors){
- //                   for(let doctor of doctors){
-                   resultArea.innerHTML +=
-                   //<div>ID: ${doctors.doctorId}</div>
-                  ` <div>Name: ${doctors.name} </div>
-                    <div>ID: ${doctors.doctorId} </div>
-                    `
-                  }
-//                    for(let doctor of doctors){
-//                      resultArea.innerHTML += `
-//                        <h3><li>${doctor.name}</li></h3>
-//                        `
-//                        }
-                     // resultArea.innerHTML += `</ul>`
-                       else {
-                        resultArea.innerHTML = "No Doctor";
-                      }
+
+                              table.innerHTML += `
+                          <div><td>${doctors.doctorId}</td> </div>
+                           <div><td>${doctors.name}</td></div>
+                           <div><td>${doctors.dob}</td></div>
+                           <div><td>${doctors.isActive}</td></div>
+                               `
         }
 
        //Event Handlers

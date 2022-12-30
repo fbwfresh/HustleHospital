@@ -5,7 +5,7 @@
     --error-color: rgba(194, 0, 0, 0.71);
 }
 .background {
-    background-color: teal;
+    background-color: #FFF5EE;
     margin: 0;
     counter-reset: section;
 }
@@ -14,12 +14,12 @@
     width: 50%;
     border: 3px solid black;
     padding: 20px;
-    color: blue;
-    background-color: gray;
+    color: black;
+    background-color: #FAEBD7;
     text-align: center;
 }
 .validated-field:invalid {
-    outline: 2px solid blue;
+    outline: 2px solid var(--error-color);
 }
 .validated-field:focus:invalid {
     color: var(--error-color);
@@ -29,7 +29,14 @@
     max-width: 50%;
 }
 
-.card-content .form-field {
+#result {
+ margin: auto;
+    width: 50%;
+    border: 3px solid black;
+    padding: 20px;
+        text-align: center;
+
+
 
 }
 .form-field {
