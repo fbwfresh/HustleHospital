@@ -6,51 +6,37 @@ class PatientPage extends BaseClass {
 
     constructor() {
         super();
-        this.bindClassMethods(['onCreate', 'renderPatient', 'onGetPatients'], this);
+        this.bindClassMethods(['onCreate', 'renderPatient', 'onGetPatients', 'onGetById'], this);
         this.dataStore = new DataStore();
     }
     async mount() {
         document.getElementById('create-patientForm').addEventListener('submit', this.onCreate);
+        document.getElementById('findById-patientForm').addEventListener('submit', this.onGetById);
+
         this.client = new PatientClient();
 
         this.dataStore.addChangeListener(this.renderPatient)
         //this.onGetPatients()
     }
 
-    async renderPatient() {
+     async renderPatient() {
 
-//        let patientArea = document.getElementById("result-info");
-//
-//        const patients = this.dataStore.get("patients");
-//        patientArea.innerHTML +=  `<ul>`
-//
-//        if (patients) {
-//            for(let patient of patients) {
-//            patientArea.innerHTML += `
-//            <h4><li>${patient.patientId}</li></h4>
-//            <h3>${patient.name}</h3>
-//            <p>${patient.dob}</p>
-//            <p>${patient.insurance}</p>
-//            `
-//            }
-//            patientArea.innerHTML +=  `</ul>`
-//
-//        } else {
-//            patientArea.innerHTML = "No Item";
-//        }
+        let patientRetrieved = document.getElementById("result-info");
+        //let content = "";
+        let patientById = this.dataStore.get("patient");
+
+
+        patientRetrieved.innerHTML = `${patientById.name}`;
+
 
         const table = document.getElementById("patientTable");
         let tableContent = "";
 
-
         const patients = this.dataStore.get("patients");
-//        let patients_json = [];
-//        patients_json.push(patients);
-
 
         if (patients) {
         for(let patient of patients){
-//        patients_json.map(patient => {
+
             tableContent +=
              `<tr>
             <td>${patient.patientId}</td>
@@ -58,10 +44,7 @@ class PatientPage extends BaseClass {
             <td>${patient.dob}</td>
             <td>${patient.insurance}</td>
             </tr>`
-//           }
-//            )
         }
-
 
                          table.innerHTML = `
                          <tr>
@@ -79,6 +62,23 @@ class PatientPage extends BaseClass {
     async onGetPatients() {
         let result = await this.client.getAllPatients(this.errorHandler);
         this.dataStore.set("patients",result);
+        }
+
+    async onGetById(event) {
+        event.preventDefault();
+
+        let patientId = document.getElementById("add-id-field").value;
+
+        let result = await this.client.getPatient(patientId, this.errorHandler);
+
+        this.dataStore.set("patient",result);
+
+                if (result) {
+                console.log(result);
+                    this.showMessage(`"Successful"`)
+                } else {
+                    this.errorHandler("Error creating!  Try again...");
+                }
         }
 
     async onCreate(event) {
