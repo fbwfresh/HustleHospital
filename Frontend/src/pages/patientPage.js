@@ -6,12 +6,13 @@ class PatientPage extends BaseClass {
 
     constructor() {
         super();
-        this.bindClassMethods(['onCreate', 'renderPatient', 'onGetPatients', 'onGetById'], this);
+//        this.bindClassMethods(['onCreate', 'renderPatient', 'onGetPatients', 'onGetById'], this);
+        this.bindClassMethods(['onCreate', 'renderPatient', 'onGetPatients'], this);
         this.dataStore = new DataStore();
     }
     async mount() {
         document.getElementById('create-patientForm').addEventListener('submit', this.onCreate);
-        document.getElementById('findById-patientForm').addEventListener('submit', this.onGetById);
+//        document.getElementById('findById-patientForm').addEventListener('submit', this.onGetById);
 
         this.client = new PatientClient();
 
@@ -21,12 +22,12 @@ class PatientPage extends BaseClass {
 
      async renderPatient() {
 
-        let patientRetrieved = document.getElementById("result-info");
-        //let content = "";
-        let patientById = this.dataStore.get("patient");
-
-
-        patientRetrieved.innerHTML = `${patientById.name}`;
+//        let patientRetrieved = document.getElementById("result-info");
+//        //let content = "";
+//        let patientById = this.dataStore.get("patient");
+//
+//
+//        patientRetrieved.innerHTML = `${patientById.name}`;
 
 
         const table = document.getElementById("patientTable");
@@ -64,22 +65,22 @@ class PatientPage extends BaseClass {
         this.dataStore.set("patients",result);
         }
 
-    async onGetById(event) {
-        event.preventDefault();
-
-        let patientId = document.getElementById("add-id-field").value;
-
-        let result = await this.client.getPatient(patientId, this.errorHandler);
-
-        this.dataStore.set("patient",result);
-
-                if (result) {
-                console.log(result);
-                    this.showMessage(`"Successful"`)
-                } else {
-                    this.errorHandler("Error creating!  Try again...");
-                }
-        }
+//    async onGetById(event) {
+//        event.preventDefault();
+//
+//        let patientId = document.getElementById("add-id-field").value;
+//
+//        let result = await this.client.getPatient(patientId, this.errorHandler);
+//
+//        this.dataStore.set("patient",result);
+//
+//                if (result) {
+//                console.log(result);
+//                    this.showMessage(`"Successful"`)
+//                } else {
+//                    this.errorHandler("Error creating!  Try again...");
+//                }
+//        }
 
     async onCreate(event) {
         event.preventDefault();

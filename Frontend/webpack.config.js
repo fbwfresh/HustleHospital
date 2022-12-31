@@ -9,6 +9,7 @@ module.exports = {
   },
   entry: {
 
+    appointmentPage: path.resolve(__dirname, 'src', 'pages', 'appointmentPage.js'),
     patientPage: path.resolve(__dirname, 'src', 'pages', 'patientPage.js'),
     HustleHospitalMainPage: path.resolve(__dirname, 'src', 'pages', 'HustleHospitalMainPage.js'),
     doctorPage: path.resolve(__dirname,'src','pages','doctorPage.js'),
@@ -38,8 +39,6 @@ module.exports = {
 
   plugins: [
     new HtmlWebpackPlugin({
-
-
         template: './src/patients.html',
         filename: 'patients.html',
         inject: false
@@ -50,6 +49,12 @@ module.exports = {
 
       inject: false
     }),
+    new HtmlWebpackPlugin({
+          template: './src/appointmentPage.html',
+          filename: 'appointmentPage.html',
+
+          inject: false
+        }),
     new HtmlWebpackPlugin({
           template: './src/HustleHospital.html',
           filename: 'HustleHospital.html',
