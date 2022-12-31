@@ -17,6 +17,13 @@ public class Doctor {
         this.isActive = true;
     }
 
+    public Doctor(String name, String dob, String doctorId, boolean isActive){
+        this.name = name;
+        this.dob = dob;
+        this.doctorId = doctorId;
+        this.isActive = isActive;
+    }
+
     public String getName() {
         return name;
     }

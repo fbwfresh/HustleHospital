@@ -38,6 +38,7 @@ public class DoctorController {
         doctorResponse.setDoctorId(doctor.getDoctorId());
         doctorResponse.setName(doctor.getName());
         doctorResponse.setDob(doctor.getDob());
+        doctorResponse.setActive(doctor.isActive());
         return ResponseEntity.ok(doctorResponse);
     }
 
