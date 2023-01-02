@@ -15,6 +15,7 @@ class DoctorPage extends BaseClass {
         async mount() {
             document.getElementById('createButton').addEventListener('click',this.onCreate);
             document.getElementById('findButton').addEventListener('click',this.onFindById);
+           // document.getElementById('deleteButton').addEventListener('click',this.onDelete);
             this.client = new DoctorClient();
             this.dataStore.addChangeListener(this.renderDoctorById)
             }
@@ -73,6 +74,20 @@ class DoctorPage extends BaseClass {
 this.errorHandler("Error creating! Try again... ");
 }
 }
+
+//    async onDelete(event){
+//        event.preventDefault();
+//                let doctorId = document.getElementById("delete-id-field").value;
+//              const deletedDoctor = await this.client.deleteDoctor(doctorId, this.errorHandler);
+//                //not sure if i need to set the dataStore
+//                this.dataStore.set("doctor",deletedDoctor);
+//                console.log(deletedDoctor);
+//                if(deletedDoctor){
+//                this.showMessage("Deleted Doctor!")
+//
+//                }
+//
+//    }
 }
 
 const main = async () => {

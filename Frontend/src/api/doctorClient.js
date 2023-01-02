@@ -51,6 +51,28 @@ export default class DoctorClient extends BaseClass {
                 }
         }
 
+//    async deleteDoctor(doctorId,errorCallback){
+//         try{
+//                    const response = await this.client.delete(`/doctor/${doctorId}`)
+//                    return response.data;
+//                }catch(error){
+//                    this.handleError("deleteDoctor",error,errorCallback)
+//                    }
+//    }
+//Todo: Finish this method I stopped it to work on the delete doctor method
+//    async updateDoctor(name,dob,doctorId,isActive,errorCallback){
+//        try{
+//            const response = await this.client.put(`/doctor`,{
+//                name: name,
+//                dob:dob,
+//                doctorId:doctorId,
+//                isActive:isActive});
+//                console.log(response.data);
+//        }catch(error){
+//            this.handleError("updateDoctor",error,errorCallback);
+//            }
+//    }
+
         //helper method to log the error and run any error functions. the param is the error recieved from the server
 
         handleError(method,error,errorCallback) {

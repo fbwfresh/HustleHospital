@@ -22,10 +22,6 @@ public class DoctorController {
     DoctorController(DoctorService doctorService) {
         this.doctorService = doctorService;
     }
-//    @GetMapping("/hello")
-//    public ResponseEntity<String> hello(){
-//        return ResponseEntity.ok("hello user");
-//    }
 
     @GetMapping("/{doctorId}")
     public ResponseEntity<DoctorResponse> getDoctor(@PathVariable("doctorId") String doctorId) {
@@ -70,11 +66,9 @@ public class DoctorController {
 
     @PutMapping
     public ResponseEntity<DoctorResponse> updateDoctor(@RequestBody DoctorUpdateRequest doctorUpdateRequest) {
-        Doctor doctor = new Doctor(doctorUpdateRequest.getName(), doctorUpdateRequest.getDob());
-        doctor.setDoctorId(doctorUpdateRequest.getDoctorId());
+        Doctor doctor = new Doctor(doctorUpdateRequest.getName(), doctorUpdateRequest.getDob(), doctorUpdateRequest.getDoctorId(), doctorUpdateRequest.isActive());
         doctorService.updateDoctor(doctor);
         DoctorResponse doctorResponse = createDoctorResponse(doctor);
-
         return ResponseEntity.ok(doctorResponse);
     }
     @DeleteMapping("/{doctorId}")
