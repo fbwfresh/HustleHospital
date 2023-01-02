@@ -46,3 +46,33 @@
     width: 200%;
     padding: 10px;
 }
+
+.navBar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  background-color: silver;
+  overflow: hidden;
+      border: 5px solid green ;
+
+
+}
+.navBar a {
+    width: 33%;
+  float: left;
+  color: black;
+  text-align: justify;
+  padding: 20px 20px;
+  text-decoration: none;
+  font-size: 20px;
+
+}
+
+.navBar a:hover {
+  background-color: white;
+  color: purple;
+}
+
+.active {
+    background-color: red;
+}
