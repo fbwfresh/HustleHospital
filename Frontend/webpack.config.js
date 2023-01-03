@@ -9,6 +9,7 @@ module.exports = {
   },
   entry: {
 
+    appointmentPage: path.resolve(__dirname, 'src', 'pages', 'appointmentPage.js'),
     patientPage: path.resolve(__dirname, 'src', 'pages', 'patientPage.js'),
     HustleHospitalMainPage: path.resolve(__dirname, 'src', 'pages', 'HustleHospitalMainPage.js'),
     doctorPage: path.resolve(__dirname,'src','pages','doctorPage.js'),
@@ -23,9 +24,10 @@ module.exports = {
     port: 8080,
     open: true,
 
-  
+
 
     openPage: 'http://localhost:8080/HustleHospital.html',
+
 
     // disableHostChecks, otherwise we get an error about headers and the page won't render
     disableHostCheck: true,
@@ -40,6 +42,7 @@ module.exports = {
             target: 'http://localhost:5001'
           }
         ]
+
   },
 
   plugins: [
@@ -58,6 +61,12 @@ module.exports = {
 
       inject: false
     }),
+    new HtmlWebpackPlugin({
+          template: './src/appointmentPage.html',
+          filename: 'appointmentPage.html',
+
+          inject: false
+        }),
     new HtmlWebpackPlugin({
           template: './src/HustleHospital.html',
           filename: 'HustleHospital.html',

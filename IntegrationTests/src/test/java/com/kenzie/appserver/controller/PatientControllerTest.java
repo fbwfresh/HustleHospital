@@ -41,7 +41,7 @@ public class PatientControllerTest {
         String patientId = UUID.randomUUID().toString();
         String name = mockNeat.strings().valStr();
         String dob = mockNeat.strings().valStr();
-        boolean insurance = true;
+        String insurance = mockNeat.strings().valStr();
 
         Patient patient = new Patient(patientId, name, dob, insurance);
         Patient persistedPatient = patientService.addNewPatient(patient);
@@ -54,7 +54,7 @@ public class PatientControllerTest {
                 .andExpect(jsonPath("dob")
                         .value(is(dob)))
                 .andExpect(jsonPath("insurance")
-                        .value(true))
+                        .value(is(insurance)))
                 .andExpect(status().isOk());
     }
 
@@ -94,7 +94,7 @@ public class PatientControllerTest {
         String patientId = UUID.randomUUID().toString();
         String name = mockNeat.strings().valStr();
         String dob = mockNeat.strings().valStr();
-        boolean insurance = true;
+        String insurance = mockNeat.strings().valStr();
 
         Patient patient = new Patient(patientId, name, dob, insurance);
         Patient persistedPatient = patientService.addNewPatient(patient);

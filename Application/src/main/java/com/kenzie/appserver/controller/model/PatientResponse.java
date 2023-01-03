@@ -15,7 +15,7 @@ public class PatientResponse {
     private String dob;
 
     @JsonProperty("insurance")
-    private boolean insurance;
+    private String insurance;
 
     public String getPatientId() {
         return patientId;
@@ -41,11 +41,11 @@ public class PatientResponse {
         this.dob = dob;
     }
 
-    public boolean isInsurance() {
+    public String isInsurance() {
         return insurance;
     }
 
-    public void setInsurance(boolean insurance) {
+    public void setInsurance(String insurance) {
         this.insurance = insurance;
     }
 }

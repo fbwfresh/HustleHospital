@@ -10,7 +10,7 @@ public class PatientRecord {
     private String patientId;
     private String name;
     private String dob;
-    private boolean insurance;
+    private String insurance;
 
     @DynamoDBHashKey(attributeName = "PatientId")
     public String getPatientId() {
@@ -40,11 +40,11 @@ public class PatientRecord {
     }
 
     @DynamoDBAttribute(attributeName = "Insurance")
-    public boolean isInsurance() {
+    public String isInsurance() {
         return insurance;
     }
 
-    public void setInsurance(boolean insurance) {
+    public void setInsurance(String insurance) {
         this.insurance = insurance;
     }
 }

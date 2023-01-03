@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script type="text/javascript" src="appointmentPage.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+</head>
+<body class="background">
+<header class="header" id="header">
+    <div class="site-title">
+        <a class="header_home" href="HustleHospital.html">Appointments</a>
+    </div>
+</header>
+
+<div class="newPatientCard">
+    <h2>Input New Appointment</h2>
+    <form class="card-content" id="create-appointmentForm">
+        <p class="form-field">
+            <label>PatientId</label>-->
+            <input type="text" required class="validated-field" id="add-patientId-field">
+            <label>DoctorId</label>
+            <input type="text" required class="validated-field" id="add-doctorId-field">
+            <label>Date</label>
+            <input type="text" required class="validated-field" id="add-date-field">
+            <label>Appointment Description</label>
+            <input type="text" required class="validated-field" id="add-appointmentDescription-field">
+        </p>
+        <button type="submit">Submit</button>
+    </form>
+</div>
+<div class="newPatientCard">
+    <h2>Find by Patient Id</h2>
+    <form class="card-content" id="findById-appointmentForm">
+        <p class="form-field">
+            <!--            <label>PatientId</label>&ndash;&gt;-->
+            <!--            <input type="text" required class="validated-field" id="add-patientId-field">-->
+            <label>Patient Id</label>
+            <input type="text" required class="validated-field" id="add-id-field">
+        </p>
+        <button type="submit">Submit</button>
+    </form>
+</div>
+
+<div class="card" id="result">
+    <h2>Appointment retrieved:</h2>
+    <p id="result-info"></p>
+</div>
+
+
+<div class="card" >
+
+<h2>Appointments</h2>
+<table class="table" id="appointmentTable">
+
+</table>
+</div>
+
+
+
+</body>
+</html>
+
