@@ -16,7 +16,7 @@ class AppointmentPage extends BaseClass {
 
         this.client = new AppointmentClient();
 
-        this.dataStore.addChangeListener(this.renderAppointment)
+//        this.dataStore.addChangeListener(this.renderAppointment)
 //        this.dataStore.addChangeListener(this.renderAppointments)
         //this.onGetPatients()
     }
@@ -41,11 +41,18 @@ class AppointmentPage extends BaseClass {
         let appointmentRetrieved = document.getElementById("result-info");
         let patientById = this.dataStore.get("appointment");
 
-        appointmentRetrieved.innerHTML = `
+        appointmentRetrieved.innerHTML +=
+        `
         <p>Patient Id:${patientById.patientId}</p>
-        <p>Date:${patientById.date}</p>
-        <p>Appointment Description:${patientById.appointmentDescription}</p>
-        `;
+        <p>Appointment Description:</p>
+        <p>${patientById.appointmentDescription}</p>
+        `
+//         `<tr>
+//        <td>${patientById.patientId}</td>
+//        <td>${patientById.doctorId}</td>
+//        <td>${patientById.date}</td>
+//        <td>${patientById.appointmentDescription}</td>
+//        </tr>`
         }
 
 //    async onGetAppointments() {
@@ -65,7 +72,7 @@ class AppointmentPage extends BaseClass {
                 if (result) {
                 console.log(result);
                     this.showMessage(`"Successful"`)
-//                    this.renderAppointment()
+                    this.renderAppointment()
                 } else {
                     this.errorHandler("Error creating!  Try again...");
                 }
