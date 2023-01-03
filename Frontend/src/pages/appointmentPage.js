@@ -16,41 +16,25 @@ class AppointmentPage extends BaseClass {
 
         this.client = new AppointmentClient();
 
-//        this.dataStore.addChangeListener(this.renderAppointment)
+        this.dataStore.addChangeListener(this.renderAppointment)
 //        this.dataStore.addChangeListener(this.renderAppointments)
         //this.onGetPatients()
     }
 
     async renderAppointments() {
             const table = document.getElementById("appointmentTable");
-            let tableContent = "";
 
             const appointments = this.dataStore.get("appointments");
 
-            if (appointments) {
-            for(let appointment of appointments){
-
-                tableContent +=
+                table.innerHTML +=
                  `<tr>
-                <td>${appointment.patientId}</td>
-                <td>${appointment.doctorId}</td>
-                <td>${appointment.date}</td>
-                <td>${appointment.appointmentDescription}</td>
+                <td>${appointments.patientId}</td>
+                <td>${appointments.doctorId}</td>
+                <td>${appointments.date}</td>
+                <td>${appointments.appointmentDescription}</td>
                 </tr>`
-            }
-
-                             table.innerHTML = `
-                             <tr>
-                             <th>Patient Id</th>
-                             <th>Doctor Id</th>
-                             <th>Date</th>
-                             <th>Appointment Description</th>
-                             </tr> ` + tableContent;
-
-                } else {
-                    table.innerHTML = "No Appointment";
-                }
     }
+
 
      async renderAppointment() {
 
@@ -74,14 +58,14 @@ class AppointmentPage extends BaseClass {
 
         let patientId = document.getElementById("add-id-field").value;
 
-        let result = await this.client.getAppointment(patientId, this.errorHandler);
+        const result = await this.client.getAppointment(patientId, this.errorHandler);
 
         this.dataStore.set("appointment",result);
 
                 if (result) {
                 console.log(result);
                     this.showMessage(`"Successful"`)
-                    this.renderAppointment()
+//                    this.renderAppointment()
                 } else {
                     this.errorHandler("Error creating!  Try again...");
                 }
