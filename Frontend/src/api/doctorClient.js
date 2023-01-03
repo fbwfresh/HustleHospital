@@ -32,8 +32,8 @@ export default class DoctorClient extends BaseClass {
     async createDoctor(name, dob, errorCallback){
         try{
             const response = await this.client.post(`doctor`, {
-                name: name,
-                dob: dob
+                "name": name,
+                "dob": dob
                 });
                 console.log(response.data);
                 return response.data;

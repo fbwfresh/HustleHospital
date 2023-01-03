@@ -72,7 +72,7 @@ class DoctorPage extends BaseClass {
             this.renderDoctors()
 } else {
 this.errorHandler("Error creating! Try again... ");
-}
+    }
 }
 
 //    async onDelete(event){
