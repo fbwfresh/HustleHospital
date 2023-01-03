@@ -2,9 +2,9 @@
 
 import BaseClass from "../util/baseClass";
 import DataStore from "../util/DataStore";
-import AppointmentClient from "../api/appointmentClient";
+import AppointmentClient from "../api/AppointmentClient1";
 
-class AppointmentPage extends BaseClass {
+class AppointmentPage1 extends BaseClass {
 
     constructor() {
         super();
