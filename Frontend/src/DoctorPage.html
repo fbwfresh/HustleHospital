@@ -6,19 +6,41 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   <script type="text/javascript" src="doctorPage.js"></script>
-  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <link rel="stylesheet" type="text/css" href="css/DoctorPage.css">
   <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
-</head>
-<body>
-<header class="header" id="header">
-  <div class="site-title">
-    <a class="header_home" href="DoctorPage.html">Doctor</a>
-  </div>
-  <div class="HustleHospitalPageLink">
-    <a class ="HustleHospitalPageLink" href="HustleHospital.html"><h2>Home Page</h2></a>
-  </div>
+  <style>
+            table {
+                border-collapse: collapse;
+            }
+            th {
+                background-color:black;
+                Color:white;
+            }
+            th, td {
+                width:150px;
+                text-align:center;
+                border:1px solid black;
+                padding:5px
 
-</header>
+            }
+            .geeks {
+                border-right:hidden;
+            }
+            .gfg {
+                border-collapse:separate;
+                border-spacing:0 15px;
+            }
+            h1 {
+                color:green;
+            }
+        </style>
+  <div class="navBar">
+    <a class="patientPage" href="patients.html">Patient Portal</a>
+    <a class="homePage" href="HustleHospital.html">HomePage</a>
+    <a class="active" href="DoctorPage.html">Doctor Portal</a>
+  </div>
+</head>
+
 <div class="newDoctorCard">
   <h2>Input New Doctor</h2>
   <form class="card-content" id="create-doctorForm">
@@ -27,20 +49,56 @@
       <input type="text" required class="validated-field" id="add-doctor-name-field">
       <label>DOB</label>
       <input type="text" required class="validated-field" id="add-doctor-dob-field">
-<!--      <label for="active">Is Doctor Active:</label>-->
-<!--      <select name="active" id="active">-->
-<!--        <option value="null"></option>-->
-<!--        <option value="Active">Active</option>-->
-<!--        <option value="Inactive">Inactive</option>-->
-<!--      </select>-->
     </p>
-    <button type="submit">Submit</button>
+    <button type="submit" id="createButton">Submit</button>
   </form>
 </div>
 <div class="card-content" id="result">
-  <h2>Result:</h2>
-  <p id="result-info"></p>
+  <table id="result-info">
+    <tr>
+      <th>Id</th>
+      <th>Dr.</th>
+      <th>DOB</th>
+      <th>IsActive</th>
+    </tr>
+  </table>
 </div>
+
+<div class="newDoctorCard">
+  <h2>Find by DoctorId</h2>
+  <form class="card-content" id="findById-doctorForm">
+    <p class="form-field">
+      <label>Doctor Id</label>
+      <input type="text" required class="validated-field" id="add-id-field">
+    </p>
+    <button type="submit" id="findButton">Submit</button>
+  </form>
+  <div class="card-content">
+  <table id="doctorFoundByIdResult">
+    <tr>
+      <th id="doctorIdField">Id</th>
+      <th id="doctorNameField">Dr.</th>
+      <th id="doctorDobField">DOB</th>
+      <th id="doctorIsActiveField">IsActive</th>
+    </tr>
+  </table>
+  </div>
+</div>
+
+<!--<div class="newDoctorCard">-->
+<!--  <h2>Delete by DoctorId</h2>-->
+<!-- <form class="card-content" id="deleteById-doctorForm">-->
+<!--   <p class="form-field">-->
+<!--      <label>Doctor Id</label>-->
+<!--     <input type="text" required class="validated-field" id="delete-id-field">-->
+<!--   </p>-->
+<!--   <button type="submit" id="deleteButton">Delete Doctor</button>-->
+<!-- </form>-->
+
+
+<!--</div>-->
+
+
 
 </body>
 </html>
