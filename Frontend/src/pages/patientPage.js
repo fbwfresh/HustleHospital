@@ -31,6 +31,7 @@ class PatientPage extends BaseClass {
                              <div>ID: ${patient.patientId}</div>
                              <div>Name: ${patient.name}</div>
                          `
+
 //            const patients = this.dataStore.get("patients");
 //                    resultArea.innerHTML +=  `<ul>`
 //            if (patients) {

@@ -1,0 +1,78 @@
+:root {
+    /* css variables: https://developer.mozilla.org/en-US/docs/Web/CSS/var */
+    --primary-color: #131921;
+    --secondary-color: #fff;
+    --error-color: rgba(194, 0, 0, 0.71);
+}
+.background {
+    background-color: #FFF5EE;
+    margin: 0;
+    counter-reset: section;
+}
+.newDoctorCard {
+    margin: auto;
+    width: 50%;
+    border: 3px solid black;
+    padding: 20px;
+    color: black;
+    background-color: #FAEBD7;
+    text-align: center;
+}
+.validated-field:invalid {
+    outline: 2px solid var(--error-color);
+}
+.validated-field:focus:invalid {
+    color: var(--error-color);
+}
+
+.card-content {
+    max-width: 50%;
+}
+
+#result {
+ margin: auto;
+    width: 50%;
+    border: 3px solid black;
+    padding: 20px;
+        text-align: center;
+
+
+
+}
+.form-field {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    width: 200%;
+    padding: 10px;
+}
+
+.navBar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  background-color: silver;
+  overflow: hidden;
+      border: 5px solid green ;
+
+
+}
+.navBar a {
+    width: 33%;
+  float: left;
+  color: black;
+  text-align: justify;
+  padding: 20px 20px;
+  text-decoration: none;
+  font-size: 20px;
+
+}
+
+.navBar a:hover {
+  background-color: white;
+  color: purple;
+}
+
+.active {
+    background-color: red;
+}

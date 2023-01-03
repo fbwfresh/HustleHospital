@@ -20,20 +20,20 @@ public class DoctorService {
         public Doctor findById(String doctorId) {
             Doctor doctorBeingRetrieved = doctorRepository
                     .findById(doctorId)
-                    .map(doctor -> new Doctor(doctor.getName(), doctor.getDob()))
+                    .map(doctor -> new Doctor(doctor.getName(),doctor.getDob(),doctor.getDoctorId(),doctor.isActive()))
                     .orElse(null);
 
             return doctorBeingRetrieved;
         }
         public List<Doctor> findAll(){
             List<Doctor> doctors = new ArrayList<>();
-            doctorRepository.findAll().forEach(doctor -> doctors.add(new Doctor(doctor.getName(),doctor.getDob())));
+            doctorRepository.findAll().forEach(doctor -> doctors.add(new Doctor(doctor.getName(),doctor.getDob(),doctor.getDoctorId(),doctor.isActive())));
             return doctors;
         }
 
         public DoctorRecord addNewDoctor(Doctor doctor) {
             DoctorRecord doctorRecord = new DoctorRecord();
-            doctorRecord.setDoctorId(doctorRecord.getDoctorId());
+            doctorRecord.setDoctorId(doctor.getDoctorId());
             doctorRecord.setName(doctor.getName());
             doctorRecord.setDob(doctor.getDob());
             doctorRecord.setActive(doctor.isActive());
