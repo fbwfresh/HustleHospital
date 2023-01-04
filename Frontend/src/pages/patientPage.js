@@ -6,12 +6,17 @@ class PatientPage extends BaseClass {
 
     constructor() {
         super();
-        this.bindClassMethods(['onCreate', 'renderPatient', 'onGetPatients', 'onGetById'], this);
+
+//        this.bindClassMethods(['onCreate', 'renderPatient', 'onGetPatients', 'onGetById'], this);
+        this.bindClassMethods(['onCreate', 'renderPatient', 'onGetPatients'], this);
+
         this.dataStore = new DataStore();
     }
     async mount() {
         document.getElementById('create-patientForm').addEventListener('submit', this.onCreate);
-        document.getElementById('findById-patientForm').addEventListener('submit', this.onGetById);
+
+//        document.getElementById('findById-patientForm').addEventListener('submit', this.onGetById);
+
 
         this.client = new PatientClient();
 
@@ -22,12 +27,14 @@ class PatientPage extends BaseClass {
 
      async renderPatient() {
 
-        let patientRetrieved = document.getElementById("result-info");
-        //let content = "";
-        let patientById = this.dataStore.get("patient");
 
+//        let patientRetrieved = document.getElementById("result-info");
+//        //let content = "";
+//        let patientById = this.dataStore.get("patient");
+//
+//
+//        patientRetrieved.innerHTML = `${patientById.name}`;
 
-        patientRetrieved.innerHTML = `${patientById.name}`;
 
 
         const table = document.getElementById("patientTable");
@@ -55,6 +62,7 @@ class PatientPage extends BaseClass {
                          <th>Insurance</th>
                          </tr> ` + tableContent;
 
+
             } else {
                 table.innerHTML = "No patient";
             }
@@ -65,22 +73,23 @@ class PatientPage extends BaseClass {
         this.dataStore.set("patients",result);
         }
 
-    async onGetById(event) {
-        event.preventDefault();
 
-        let patientId = document.getElementById("add-id-field").value;
-
-        let result = await this.client.getPatient(patientId, this.errorHandler);
-
-        this.dataStore.set("patient",result);
-
-                if (result) {
-                console.log(result);
-                    this.showMessage(`"Successful"`)
-                } else {
-                    this.errorHandler("Error creating!  Try again...");
-                }
-        }
+//    async onGetById(event) {
+//        event.preventDefault();
+//
+//        let patientId = document.getElementById("add-id-field").value;
+//
+//        let result = await this.client.getPatient(patientId, this.errorHandler);
+//
+//        this.dataStore.set("patient",result);
+//
+//                if (result) {
+//                console.log(result);
+//                    this.showMessage(`"Successful"`)
+//                } else {
+//                    this.errorHandler("Error creating!  Try again...");
+//                }
+//        }
 
     async onCreate(event) {
         event.preventDefault();
@@ -105,4 +114,35 @@ const main = async () => {
     patientPage.mount();
 };
 
-window.addEventListener('DOMContentLoaded', main);
+    window.addEventListener('DOMContentLoaded', main);
+
+//Modal Appointment Note code below
+
+const modal = document.querySelector('.modal');
+const overlay = document.querySelector('.overlay');
+const btnCloseModal = document.querySelector('.close-modal');
+const btnsOpenModal = document.querySelectorAll('.show-modal');
+
+const openModal = function () {
+    modal.classList.remove('hidden');
+    overlay.classList.remove('hidden');
+};
+
+const closeModal = function () {
+    modal.classList.add('hidden');
+    overlay.classList.add('hidden');
+};
+
+for (let i = 0; i < btnsOpenModal.length; i++)
+    btnsOpenModal[i].addEventListener('click', openModal);
+
+btnCloseModal.addEventListener('click', closeModal);
+overlay.addEventListener('click', closeModal);
+
+document.addEventListener('keydown', function (e) {
+    // console.log(e.key);
+
+    if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+        closeModal();
+    }
+});
