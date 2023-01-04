@@ -6,13 +6,17 @@ class PatientPage extends BaseClass {
 
     constructor() {
         super();
+
 //        this.bindClassMethods(['onCreate', 'renderPatient', 'onGetPatients', 'onGetById'], this);
         this.bindClassMethods(['onCreate', 'renderPatient', 'onGetPatients'], this);
+
         this.dataStore = new DataStore();
     }
     async mount() {
         document.getElementById('create-patientForm').addEventListener('submit', this.onCreate);
+
 //        document.getElementById('findById-patientForm').addEventListener('submit', this.onGetById);
+
 
         this.client = new PatientClient();
 
@@ -23,12 +27,14 @@ class PatientPage extends BaseClass {
 
      async renderPatient() {
 
+
 //        let patientRetrieved = document.getElementById("result-info");
 //        //let content = "";
 //        let patientById = this.dataStore.get("patient");
 //
 //
 //        patientRetrieved.innerHTML = `${patientById.name}`;
+
 
 
         const table = document.getElementById("patientTable");
@@ -57,7 +63,6 @@ class PatientPage extends BaseClass {
                          </tr> ` + tableContent;
 
 
-
             } else {
                 table.innerHTML = "No patient";
             }
@@ -67,6 +72,7 @@ class PatientPage extends BaseClass {
         let result = await this.client.getAllPatients(this.errorHandler);
         this.dataStore.set("patients",result);
         }
+
 
 //    async onGetById(event) {
 //        event.preventDefault();

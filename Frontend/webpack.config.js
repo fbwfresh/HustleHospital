@@ -29,10 +29,13 @@ module.exports = {
     openPage: 'http://localhost:8080/HustleHospital.html',
 
 
+
     // disableHostChecks, otherwise we get an error about headers and the page won't render
+
     disableHostCheck: true,
     contentBase: 'packaging_additional_published_artifacts',
     // overlay shows a full-screen overlay in the browser when there are compiler errors or warnings
+
     overlay: true,
         proxy: [
           {
