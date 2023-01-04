@@ -6,94 +6,98 @@ class PatientPage extends BaseClass {
 
     constructor() {
         super();
-//        this.bindClassMethods(['onGetPatients', 'onCreate', 'renderPatients'], this);
-//        this.bindClassMethods(['onCreate', 'renderPatients'], this);
-        this.bindClassMethods(['onCreate', 'renderPatient'], this);
+        this.bindClassMethods(['onCreate', 'renderPatient', 'onGetPatients', 'onGetById'], this);
         this.dataStore = new DataStore();
     }
     async mount() {
-//        document.getElementById('get-by-id-form').addEventListener('submit', this.onGet);
         document.getElementById('create-patientForm').addEventListener('submit', this.onCreate);
+        document.getElementById('findById-patientForm').addEventListener('submit', this.onGetById);
+
         this.client = new PatientClient();
 
-//        this.dataStore.addChangeListener(this.renderPatients)
         this.dataStore.addChangeListener(this.renderPatient)
-//        this.onGetPatients()
+        //this.onGetPatients()
     }
-//    async renderPatients() {
-    async renderPatient() {
-        let resultArea = document.getElementById("result-info");
 
-        const patient = this.dataStore.get("patient");
 
-        if (patient) {
-                         resultArea.innerHTML = `
-                             <div>ID: ${patient.patientId}</div>
-                             <div>Name: ${patient.name}</div>
-                         `
+     async renderPatient() {
 
-//            const patients = this.dataStore.get("patients");
-//                    resultArea.innerHTML +=  `<ul>`
-//            if (patients) {
-//                        for(let patient of patients) {
-//                        resultArea.innerHTML += `
-//                        <h4><li>${patient.name}</li></h4>
-////                        <h3>By: ${comment.title}</h3>
-////                        <p>${comment.content}</p>
-//                        `
-//                        }
-//                        resultArea.innerHTML +=  `</ul>`
+        let patientRetrieved = document.getElementById("result-info");
+        //let content = "";
+        let patientById = this.dataStore.get("patient");
+
+
+        patientRetrieved.innerHTML = `${patientById.name}`;
+
+
+        const table = document.getElementById("patientTable");
+        let tableContent = "";
+
+        const patients = this.dataStore.get("patients");
+
+        if (patients) {
+        for(let patient of patients){
+
+            tableContent +=
+             `<tr>
+            <td>${patient.patientId}</td>
+            <td>${patient.name}</td>
+            <td>${patient.dob}</td>
+            <td>${patient.insurance}</td>
+            </tr>`
+        }
+
+                         table.innerHTML = `
+                         <tr>
+                         <th>Id</th>
+                         <th>Name</th>
+                         <th>DOB</th>
+                         <th>Insurance</th>
+                         </tr> ` + tableContent;
+
             } else {
-                resultArea.innerHTML = "No patient";
+                table.innerHTML = "No patient";
             }
         }
-//    async onGet(event) {
-//        // Prevent the page from refreshing on form submit
-//        event.preventDefault();
-//
-//        let id = document.getElementById("id-field").value;
-//        this.dataStore.set("example", null);
-//
-//        let result = await this.client.getExample(id, this.errorHandler);
-//        this.dataStore.set("example", result);
-//        if (result) {
-//            this.showMessage(`Got ${result.name}!`)
-//        } else {
-//            this.errorHandler("Error doing GET!  Try again...");
-//        }
-//    }
-//    async onGetPatients() {
-//            // Prevent the page from refreshing on form submit
-////                event.preventDefault();
-////
-////                let patientId = document.getElementById("id-field").value;
-////                this.dataStore.set("example", null);
-//
-//        let result = await this.client.getAllPatients(this.errorHandler);
-//        this.dataStore.set("patients", result);
-////                if (result) {
-////                    this.showMessage(`Got ${result.name}!`)
-////                } else {
-////                    this.errorHandler("Error doing GET!  Try again...");
-////                }
-//    }
-    async onCreate(event) {
-        // Prevent the page from refreshing on form submit
+
+    async onGetPatients() {
+        let result = await this.client.getAllPatients(this.errorHandler);
+        this.dataStore.set("patients",result);
+        }
+
+    async onGetById(event) {
         event.preventDefault();
-        this.dataStore.set("patient", null);
 
-//        let patientId = document.getElementById("add-patientId-field").value;
+        let patientId = document.getElementById("add-id-field").value;
+
+        let result = await this.client.getPatient(patientId, this.errorHandler);
+
+        this.dataStore.set("patient",result);
+
+                if (result) {
+                console.log(result);
+                    this.showMessage(`"Successful"`)
+                } else {
+                    this.errorHandler("Error creating!  Try again...");
+                }
+        }
+
+    async onCreate(event) {
+        event.preventDefault();
+
         let name = document.getElementById("add-name-field").value;
+        let dob = document.getElementById("add-dob-field").value;
+        let insurance = document.getElementById("add-insurance-field").value;
 
-        const createdPatient = await this.client.createPatient(name, this.errorHandler);
-        this.dataStore.set("patient", createdPatient);
+        const createdPatient = await this.client.createPatient(name, dob, insurance, this.errorHandler);
 
         if (createdPatient) {
+        console.log(createdPatient);
             this.showMessage(`Created ${createdPatient.name}!`)
         } else {
             this.errorHandler("Error creating!  Try again...");
         }
-//        this.onGetPatients()
+        this.onGetPatients()
     }
 }
 const main = async () => {

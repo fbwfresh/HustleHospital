@@ -8,6 +8,9 @@ import com.kenzie.appserver.service.model.Example;
 import com.kenzie.appserver.service.model.Patient;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class PatientService {
     private PatientRepository patientRepository;
@@ -23,6 +26,14 @@ public class PatientService {
                 .orElse(null);
 
         return patientFromBackend;
+    }
+
+    public List<Patient> findAll() {
+        List<Patient> patients = new ArrayList<>();
+        patientRepository
+                .findAll()
+                .forEach(patient -> patients.add(new Patient(patient.getPatientId(), patient.getName(), patient.getDob(), patient.isInsurance())));
+        return patients;
     }
 
     public Patient addNewPatient(Patient patient) {
