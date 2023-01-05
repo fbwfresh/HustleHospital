@@ -60,7 +60,7 @@ class DoctorPage extends BaseClass {
        }
 
        async onCreate(event){
-        //console.log(this.onCreate);
+        //console.log(event);
         event.preventDefault();
         event.stopImmediatePropagation();
         let name = document.getElementById("add-doctor-name-field").value;
