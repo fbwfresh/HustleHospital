@@ -4,50 +4,86 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <script type="text/javascript" src="patientPage.js"></script>
-    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/DoctorPage.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <style>
+    table {
+    border-collapse: collapse;
+    }
+    th {
+    background-color:black;
+    Color:white;
+    }
+    th, td {
+    width:150px;
+    text-align:center;
+    border:1px solid black;
+    padding:5px
+
+    }
+    .geeks {
+    border-right:hidden;
+    }
+    .gfg {
+    border-collapse:separate;
+    border-spacing:0 15px;
+    }
+    h1 {
+    color:#EEDEC5;
+    }
+    </style>
 </head>
 <body class="background">
-<header class="header" id="header">
-    <div class="site-title">
-        <a class="header_home" href="patients.html">Patients</a>
+<header class="header">
+    <div class="site-header">
+        <h1> Hustle Hospital </h1>
     </div>
-    <div class="HustleHospitalPageLink">
-        <a class ="HustleHospitalPageLink" href="HustleHospital.html"><h2>Home Page</h2></a>
-    </div>
+
 
 </header>
 
-<div class="newPatientCard">
+<div class="navBar">
+    <a class="active" href="patients.html">Patient Portal</a>
+    <a class="homePage" href="HustleHospital.html">HomePage</a>
+    <a class="doctorPage" href="DoctorPage.html">Doctor Portal</a>
+    <a class="appointmentPage" href="appointmentPage.html">Appointment Portal</a>
+</div>
+
+
+<div class="newDoctorCard">
     <h2>Input New Patient</h2>
-    <form class="card-content" id="create-patientForm">
+    <form class="card-content" id="create-doctorForm">
         <p class="form-field">
 <!--            <label>PatientId</label>&ndash;&gt;-->
 <!--            <input type="text" required class="validated-field" id="add-patientId-field">-->
             <label>Name</label>
-            <input type="text" required class="validated-field" id="add-name-field">
+            <input type="text" placeholder="Joe Blow" required class="validated-field" id="add-name-field">
             <label>DOB</label>
-            <input type="text" required class="validated-field" id="add-dob-field">
+            <input type="text" placeholder="MM/DD/YYYY" required class="validated-field" id="add-dob-field">
             <label>Insurance</label>
-            <input type="text" required class="validated-field" id="add-insurance-field">
+            <input type="text" placeholder="Medicare" required class="validated-field" id="add-insurance-field">
         </p>
         <button id="createPatient" type="submit">Submit</button>
     </form>
+
+</div>
+<div class="card-content" id="result">
+    <table id="result-info">
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>DOB</th>
+            <th>Insurance</th>
+        </tr>
+
+    </table>
 </div>
 
-<table class="card-content" id="patientTable">
-    <tr>
-        <th>Id</th>
-        <th>Name</th>
-        <th>DOB</th>
-        <th>Insurance</th>
-    </tr>
-
-</table>
 
 
 
-<div class="newPatientCard">
+
+<div class="newDoctorCard">
     <h2>Find by Patient Id</h2>
     <form class="card-content" id="findById-patientForm">
         <p class="form-field">
@@ -58,16 +94,19 @@
         </p>
         <button id="findPatient" type="submit">Submit</button>
     </form>
-</div>
-<table class="card-content" id="result">
-    <tr>
-        <th>Id</th>
-        <th>Name</th>
-        <th>DOB</th>
-        <th>Insurance</th>
-    </tr>
 
+
+</div>
+<div class="card-content" id="result2">
+    <table id="doctorFoundByIdResult">
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>DOB</th>
+            <th>Insurance</th>
+        </tr>
 </table>
+</div>
 </body>
 </html>
 

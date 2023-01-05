@@ -2,21 +2,56 @@
 <html>
 <head>
     <script type="text/javascript" src="appointmentPage.js"></script>
-    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/DoctorPage.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <style>
+            table {
+                border-collapse: collapse;
+            }
+            th {
+                background-color:black;
+                Color:white;
+            }
+            th, td {
+                width:150px;
+                text-align:center;
+                border:1px solid black;
+                padding:5px
+
+            }
+            .geeks {
+                border-right:hidden;
+            }
+            .gfg {
+                border-collapse:separate;
+                border-spacing:0 15px;
+            }
+            h1 {
+                color:#EEDEC5;
+            }
+        </style>
 </head>
 <body class="background">
-<header class="header" id="header">
-    <div class="site-title">
-        <a class="header_home" href="HustleHospital.html">Appointments</a>
+<header class="header">
+    <div class="site-header">
+        <h1> Hustle Hospital </h1>
     </div>
+
+
 </header>
+
+<div class="navBar">
+    <a class="patientPage" href="patients.html">Patient Portal</a>
+    <a class="homePage" href="HustleHospital.html">HomePage</a>
+    <a class="doctorPage" href="DoctorPage.html">Doctor Portal</a>
+    <a class="active" href="appointmentPage.html">Appointment Portal</a>
+</div>
 
 <div class="newPatientCard">
     <h2>Input New Appointment</h2>
     <form class="card-content" id="create-appointmentForm">
         <p class="form-field">
-            <label>PatientId</label>-->
+            <label>PatientId</label>
             <input type="text" required class="validated-field" id="add-patientId-field">
             <label>DoctorId</label>
             <input type="text" required class="validated-field" id="add-doctorId-field">
@@ -29,7 +64,7 @@
     </form>
 </div>
 
-<div class="card" >
+<div class="card-content2" id="result3" >
 
 <!--    <h2>Appointments</h2>-->
     <table class="table" id="appointmentTable">
@@ -55,12 +90,13 @@
     </form>
 </div>
 
-<div class="card" id="result">
+<div class="card-content2" id="result4">
 <!--    <h2>Appointment retrieved:</h2>-->
 <!--    <p id="result-info"></p>-->
 
     <div id="result-info">
 <!--        <p>Patient Id:</p>-->
+<!--        <p>Appointment Description:</p>-->
     </div>
 
 

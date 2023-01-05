@@ -30,16 +30,25 @@
                 border-spacing:0 15px;
             }
             h1 {
-                color:green;
+                color:#EEDEC5;
             }
         </style>
-  <div class="navBar">
-    <a class="patientPage" href="patients.html">Patient Portal</a>
-    <a class="homePage" href="HustleHospital.html">HomePage</a>
-    <a class="active" href="DoctorPage.html">Doctor Portal</a>
-    <a class="appointmentPage" href="appointmentPage.html">Appointment Portal</a>
-  </div>
 </head>
+<body class="background">
+<header class="header">
+  <div class="site-header">
+    <h1> Hustle Hospital </h1>
+  </div>
+
+
+</header>
+
+<div class="navBar">
+  <a class="patientPage" href="patients.html">Patient Portal</a>
+  <a class="homePage" href="HustleHospital.html">HomePage</a>
+  <a class="active" href="DoctorPage.html">Doctor Portal</a>
+  <a class="appointmentPage" href="appointmentPage.html">Appointment Portal</a>
+</div>
 
 <div class="newDoctorCard">
   <h2>Input New Doctor</h2>
@@ -98,7 +107,8 @@
     </p>
     <button type="submit" id="findButton">Find</button>
   </form>
-  <div class="card-content">
+</div>
+<div class="card-content" id="result2">
   <table id="doctorFoundByIdResult">
     <tr>
       <th id="doctorIdField">Id</th>
@@ -107,7 +117,6 @@
       <th id="doctorIsActiveField">IsActive</th>
     </tr>
   </table>
-  </div>
 </div>
 </body>
 </html>

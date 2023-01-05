@@ -43,7 +43,7 @@ class PatientPage extends BaseClass {
 
      async renderPatients() {
 
-        const table = document.getElementById("patientTable");
+        const table = document.getElementById("result-info");
 
         const patients = this.dataStore.get("patients");
 
