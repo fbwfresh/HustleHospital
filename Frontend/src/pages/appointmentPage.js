@@ -23,45 +23,36 @@ class AppointmentPage extends BaseClass {
 
     async renderAppointments() {
             const table = document.getElementById("appointmentTable");
-            let tableContent = "";
 
             const appointments = this.dataStore.get("appointments");
 
-            if (appointments) {
-            for(let appointment of appointments){
-
-                tableContent +=
+                table.innerHTML +=
                  `<tr>
-                <td>${appointment.patientId}</td>
-                <td>${appointment.doctorId}</td>
-                <td>${appointment.date}</td>
-                <td>${appointment.appointmentDescription}</td>
+                <td>${appointments.patientId}</td>
+                <td>${appointments.doctorId}</td>
+                <td>${appointments.date}</td>
+                <td>${appointments.appointmentDescription}</td>
                 </tr>`
-            }
-
-                             table.innerHTML = `
-                             <tr>
-                             <th>Patient Id</th>
-                             <th>Doctor Id</th>
-                             <th>Date</th>
-                             <th>Appointment Description</th>
-                             </tr> ` + tableContent;
-
-                } else {
-                    table.innerHTML = "No Appointment";
-                }
     }
+
 
      async renderAppointment() {
 
         let appointmentRetrieved = document.getElementById("result-info");
         let patientById = this.dataStore.get("appointment");
 
-        appointmentRetrieved.innerHTML = `
+        appointmentRetrieved.innerHTML +=
+        `
         <p>Patient Id:${patientById.patientId}</p>
-        <p>Date:${patientById.date}</p>
-        <p>Appointment Description:${patientById.appointmentDescription}</p>
-        `;
+        <p>Appointment Description:</p>
+        <p>${patientById.appointmentDescription}</p>
+        `
+//         `<tr>
+//        <td>${patientById.patientId}</td>
+//        <td>${patientById.doctorId}</td>
+//        <td>${patientById.date}</td>
+//        <td>${patientById.appointmentDescription}</td>
+//        </tr>`
         }
 
 //    async onGetAppointments() {
@@ -74,7 +65,7 @@ class AppointmentPage extends BaseClass {
 
         let patientId = document.getElementById("add-id-field").value;
 
-        let result = await this.client.getAppointment(patientId, this.errorHandler);
+        const result = await this.client.getAppointment(patientId, this.errorHandler);
 
         this.dataStore.set("appointment",result);
 

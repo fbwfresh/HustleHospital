@@ -31,9 +31,22 @@
             <label>Insurance</label>
             <input type="text" required class="validated-field" id="add-insurance-field">
         </p>
-        <button type="submit">Submit</button>
+        <button id="createPatient" type="submit">Submit</button>
     </form>
 </div>
+
+<table class="card-content" id="patientTable">
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>DOB</th>
+        <th>Insurance</th>
+    </tr>
+
+</table>
+
+
+
 <div class="newPatientCard">
     <h2>Find by Patient Id</h2>
     <form class="card-content" id="findById-patientForm">
@@ -43,25 +56,18 @@
             <label>Patient Id</label>
             <input type="text" required class="validated-field" id="add-id-field">
         </p>
-        <button type="submit">Submit</button>
+        <button id="findPatient" type="submit">Submit</button>
     </form>
 </div>
-
-<div class="card" id="result">
-    <h2>Patient retrieved:</h2>
-    <p id="result-info"></p>
-</div>
-
-
-
-<h2>Result:</h2>
-<table class="table" id="patientTable">
+<table class="card-content" id="result">
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>DOB</th>
+        <th>Insurance</th>
+    </tr>
 
 </table>
-
-
-
-
 </body>
 </html>
 

@@ -16,7 +16,7 @@ public class AppointmentRecord {
 
     private String appointmentDescription;
 
-    @DynamoDBAttribute(attributeName = "patientId")
+    @DynamoDBHashKey(attributeName = "patientId")
     public String getPatientId() {
         return patientId;
     }
@@ -25,8 +25,8 @@ public class AppointmentRecord {
         this.patientId = patientId;
     }
 
-    @DynamoDBHashKey(attributeName = "doctorId")
-//    @DynamoDBRangeKey(attributeName = "doctorId")
+//    @DynamoDBHashKey(attributeName = "doctorId")
+    @DynamoDBAttribute(attributeName = "doctorId")
     public String getDoctorId() {
         return doctorId;
     }
