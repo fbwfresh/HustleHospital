@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+
     <title>Doctor Page</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
   <script type="text/javascript" src="doctorPage.js"></script>
   <link rel="stylesheet" type="text/css" href="css/DoctorPage.css">
   <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
@@ -38,6 +37,7 @@
     <a class="patientPage" href="patients.html">Patient Portal</a>
     <a class="homePage" href="HustleHospital.html">HomePage</a>
     <a class="active" href="DoctorPage.html">Doctor Portal</a>
+    <a class="appointmentPage" href="appointmentPage.html">Appointment Portal</a>
   </div>
 </head>
 
@@ -46,11 +46,11 @@
   <form class="card-content" id="create-doctorForm">
     <p class="form-field">
       <label>Name</label>
-      <input type="text" required class="validated-field" id="add-doctor-name-field">
+      <input type="text" placeholder="Joe Blow" required class="validated-field" id="add-doctor-name-field">
       <label>DOB</label>
-      <input type="text" required class="validated-field" id="add-doctor-dob-field">
+      <input type="text" placeholder="MM/DD/YYYY" required class="validated-field" id="add-doctor-dob-field">
     </p>
-    <button type="submit" id="createButton">Submit</button>
+    <button type="submit" >Create</button>
   </form>
 </div>
 <div class="card-content" id="result">
@@ -64,6 +64,31 @@
   </table>
 </div>
 
+<!--<div class="newDoctorCard">-->
+<!--  <h2>Update Existing Doctor</h2>-->
+<!--  <form class="card-content" id="update-doctorForm">-->
+<!--    <p class="form-field">-->
+<!--      <label>Name</label>-->
+<!--      <input type="text" placeholder="Joe Blow" required class="validated-field" id="update-doctor-name-field">-->
+<!--      <label>DOB</label>-->
+<!--      <input type="text" placeholder="MM/DD/YYYY" required class="validated-field" id="update-doctor-dob-field">-->
+<!--      <label>Doctor Id</label>-->
+<!--      <input type="text" placeholder="..." required class="validated-field" id="doctor-IdField">-->
+<!--    </p>-->
+<!--    <button type="submit" id="updateButton" >Update</button>-->
+<!--  </form>-->
+<!--</div>-->
+<!--<div class="card-content" id="updatedResult">-->
+<!--  <table id="updatedResult-info">-->
+<!--    <tr>-->
+<!--      <th>Id</th>-->
+<!--      <th>Dr.</th>-->
+<!--      <th>DOB</th>-->
+<!--      <th>IsActive</th>-->
+<!--    </tr>-->
+<!--  </table>-->
+<!--</div>-->
+
 <div class="newDoctorCard">
   <h2>Find by DoctorId</h2>
   <form class="card-content" id="findById-doctorForm">
@@ -71,7 +96,7 @@
       <label>Doctor Id</label>
       <input type="text" required class="validated-field" id="add-id-field">
     </p>
-    <button type="submit" id="findButton">Submit</button>
+    <button type="submit" id="findButton">Find</button>
   </form>
   <div class="card-content">
   <table id="doctorFoundByIdResult">
@@ -84,21 +109,5 @@
   </table>
   </div>
 </div>
-
-<!--<div class="newDoctorCard">-->
-<!--  <h2>Delete by DoctorId</h2>-->
-<!-- <form class="card-content" id="deleteById-doctorForm">-->
-<!--   <p class="form-field">-->
-<!--      <label>Doctor Id</label>-->
-<!--     <input type="text" required class="validated-field" id="delete-id-field">-->
-<!--   </p>-->
-<!--   <button type="submit" id="deleteButton">Delete Doctor</button>-->
-<!-- </form>-->
-
-
-<!--</div>-->
-
-
-
 </body>
 </html>

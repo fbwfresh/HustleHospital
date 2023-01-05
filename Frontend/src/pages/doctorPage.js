@@ -1,5 +1,3 @@
-'use strict';
-
 import BaseClass from "../util/baseClass";
 import DataStore from "../util/DataStore";
 import DoctorClient from "../api/doctorClient";
@@ -14,9 +12,10 @@ class DoctorPage extends BaseClass {
 
         //once page loads, set up the event handlers
 
-        async mount() {
-            document.getElementById('createButton').addEventListener('click',this.onCreate);
-            document.getElementById('findButton').addEventListener('click',this.onFindById);
+         mount() {
+            document.getElementById('create-doctorForm').addEventListener('submit', this.onCreate);
+            document.getElementById('findButton').addEventListener('click', this.onFindById);
+            //document.getElementById('updateButton').addEventListener('click', this.onUpdate);
            // document.getElementById('deleteButton').addEventListener('click',this.onDelete);
             this.client = new DoctorClient();
             this.dataStore.addChangeListener(this.renderDoctorById)
@@ -45,10 +44,22 @@ class DoctorPage extends BaseClass {
                                `
         }
 
+//         async renderUpdatedDoctors(){
+//                    const table = document.getElementById("updatedResult-info");
+//                    const doctors = this.dataStore.get("doctor");
+//                                      table.innerHTML += `
+//                                  <div><td>${doctors.doctorId}</td> </div>
+//                                   <div><td>${doctors.name}</td></div>
+//                                   <div><td>${doctors.dob}</td></div>
+//                                   <div><td>${doctors.isActive}</td></div>
+//                                       `
+//                }
+
        //Event Handlers
 
        async onFindById(event){
         event.preventDefault();
+        event.stopImmediatePropagation();
         let doctorId = document.getElementById("add-id-field").value;
         const foundDoctor = await this.client.getDoctor(doctorId, this.errorHandler);
         this.dataStore.set("doctor",foundDoctor);
@@ -61,7 +72,9 @@ class DoctorPage extends BaseClass {
        }
 
        async onCreate(event){
+        //console.log(event);
         event.preventDefault();
+        event.stopImmediatePropagation();
         let name = document.getElementById("add-doctor-name-field").value;
         let dob = document.getElementById("add-doctor-dob-field").value;
 //this is where the doctor gets created on the page by inputting the information we saved into variables
@@ -74,8 +87,28 @@ class DoctorPage extends BaseClass {
             this.renderDoctors()
 } else {
 this.errorHandler("Error creating! Try again... ");
+    }
 }
-}
+
+//        async onUpdate(event){
+//            event.preventDefault();
+//            let name = document.getElementById("update-doctor-name-field").value;
+//            let dob = document.getElementById("update-doctor-dob-field").value;
+//            let doctorId = document.getElementById("doctor-IdField").value;
+//
+//            const updatedDoctor = await this.client.updateDoctor(name,dob,doctorId, this.errorHandler);
+//
+//            this.dataStore.set("doctor", updatedDoctor);
+//            console.log(updatedDoctor);
+//            if(updatedDoctor){
+//            this.showMessage("Updated A Doctor!")
+//            this.renderUpdatedDoctors()
+//            }
+//            else{
+//            this.errorHandler("Error updating Doctor!")
+//            }
+//
+//        }
 
 //    async onDelete(event){
 //        event.preventDefault();
@@ -94,37 +127,6 @@ this.errorHandler("Error creating! Try again... ");
 
 const main = async () => {
     const doctorPage = new DoctorPage();
-    await doctorPage.mount();
+    doctorPage.mount();
     };
     window.addEventListener('DOMContentLoaded', main);
-
-//Modal Appointment Note code below
-
-const modal = document.querySelector('.modal');
-const overlay = document.querySelector('.overlay');
-const btnCloseModal = document.querySelector('.close-modal');
-const btnsOpenModal = document.querySelectorAll('.show-modal');
-
-const openModal = function () {
-    modal.classList.remove('hidden');
-    overlay.classList.remove('hidden');
-};
-
-const closeModal = function () {
-    modal.classList.add('hidden');
-    overlay.classList.add('hidden');
-};
-
-for (let i = 0; i < btnsOpenModal.length; i++)
-    btnsOpenModal[i].addEventListener('click', openModal);
-
-btnCloseModal.addEventListener('click', closeModal);
-overlay.addEventListener('click', closeModal);
-
-document.addEventListener('keydown', function (e) {
-    // console.log(e.key);
-
-    if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
-        closeModal();
-    }
-});
