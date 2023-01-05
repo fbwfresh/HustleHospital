@@ -43,16 +43,10 @@ class AppointmentPage extends BaseClass {
 
         appointmentRetrieved.innerHTML +=
         `
-        <p>Patient Id:${patientById.patientId}</p>
-        <p>Appointment Description:</p>
+
         <p>${patientById.appointmentDescription}</p>
         `
-//         `<tr>
-//        <td>${patientById.patientId}</td>
-//        <td>${patientById.doctorId}</td>
-//        <td>${patientById.date}</td>
-//        <td>${patientById.appointmentDescription}</td>
-//        </tr>`
+
         }
 
 //    async onGetAppointments() {
