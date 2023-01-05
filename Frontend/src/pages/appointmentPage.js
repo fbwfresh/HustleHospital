@@ -67,6 +67,7 @@ class AppointmentPage extends BaseClass {
                 console.log(result);
                     this.showMessage(`"Successful"`)
                     this.renderAppointment()
+
                 } else {
                     this.errorHandler("Error creating!  Try again...");
                 }

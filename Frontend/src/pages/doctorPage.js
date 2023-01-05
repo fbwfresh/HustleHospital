@@ -32,6 +32,7 @@ class DoctorPage extends BaseClass {
                                                           <div><td>IsActive: ${doctor.isActive}</td></div>
                                                               `
             }
+            
 
         async renderDoctors(){
             const table = document.getElementById("result-info");
