@@ -9,12 +9,15 @@
 </head>
 <body class="background">
 <header class="header" id="header">
-    <div class="site-title">
-        <a class="header_home" href="patients.html">Patients</a>
-    </div>
-    <div class="HustleHospitalPageLink">
-        <a class ="HustleHospitalPageLink" href="HustleHospital.html"><h2>Home Page</h2></a>
-    </div>
+    <h1>Patients</h1>
+    <nav>
+        <ul>
+            <li><a href="HustleHospital.html">Home</a></li>
+            <li><a href="patients.html">Patient</a></li>
+            <li><a href="DoctorPage.html">Doctor</a></li>
+            <li><a href="appointmentPage.html">Appointment</a></li>
+        </ul>
+    </nav>
 
 </header>
 
@@ -24,11 +27,11 @@
         <p class="form-field">
 <!--            <label>PatientId</label>&ndash;&gt;-->
 <!--            <input type="text" required class="validated-field" id="add-patientId-field">-->
-            <label>Name</label>
+            <label>Name:</label>
             <input type="text" required class="validated-field" id="add-name-field">
-            <label>DOB</label>
+            <label>DOB:</label>
             <input type="text" required class="validated-field" id="add-dob-field">
-            <label>Insurance</label>
+            <label>Insurance:</label>
             <input type="text" required class="validated-field" id="add-insurance-field">
         </p>
         <button type="submit">Submit</button>
@@ -40,7 +43,7 @@
         <p class="form-field">
             <!--            <label>PatientId</label>&ndash;&gt;-->
             <!--            <input type="text" required class="validated-field" id="add-patientId-field">-->
-            <label>Patient Id</label>
+            <label>Patient Id:</label>
             <input type="text" required class="validated-field" id="add-id-field">
         </p>
         <button type="submit">Submit</button>
@@ -52,12 +55,13 @@
     <p id="result-info"></p>
 </div>
 
+<div class="card" >
 
+    <h2>Patient Results:</h2>
+    <table class="table" id="appointmentTable">
 
-<h2>Result:</h2>
-<table class="table" id="patientTable">
-
-</table>
+    </table>
+</div>
 
 
 

@@ -7,22 +7,28 @@
 </head>
 <body class="background">
 <header class="header" id="header">
-    <div class="site-title">
-        <a class="header_home" href="HustleHospital.html">Appointments</a>
-    </div>
+    <h1>Appointments</h1>
+    <nav>
+        <ul>
+            <li><a href="HustleHospital.html">Home</a></li>
+            <li><a href="patients.html">Patient</a></li>
+            <li><a href="DoctorPage.html">Doctor</a></li>
+            <li><a href="appointmentPage.html">Appointment</a></li>
+        </ul>
+    </nav>
 </header>
 
 <div class="newPatientCard">
     <h2>Input New Appointment</h2>
     <form class="card-content" id="create-appointmentForm">
         <p class="form-field">
-            <label>PatientId</label>-->
+            <label>Patient Id:</label>
             <input type="text" required class="validated-field" id="add-patientId-field">
-            <label>DoctorId</label>
+            <label>Doctor Id:</label>
             <input type="text" required class="validated-field" id="add-doctorId-field">
-            <label>Date</label>
+            <label>Date:</label>
             <input type="text" required class="validated-field" id="add-date-field">
-            <label>Appointment Description</label>
+            <label>Appointment Description:</label>
             <input type="text" required class="validated-field" id="add-appointmentDescription-field">
         </p>
         <button type="submit">Submit</button>
@@ -34,7 +40,7 @@
         <p class="form-field">
             <!--            <label>PatientId</label>&ndash;&gt;-->
             <!--            <input type="text" required class="validated-field" id="add-patientId-field">-->
-            <label>Patient Id</label>
+            <label>Patient Id:</label>
             <input type="text" required class="validated-field" id="add-id-field">
         </p>
         <button type="submit">Submit</button>
@@ -49,7 +55,7 @@
 
 <div class="card" >
 
-<h2>Appointments</h2>
+<h2>Appointment Results:</h2>
 <table class="table" id="appointmentTable">
 
 </table>
