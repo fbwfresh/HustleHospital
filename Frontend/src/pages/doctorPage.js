@@ -15,6 +15,7 @@ class DoctorPage extends BaseClass {
          mount() {
             document.getElementById('create-doctorForm').addEventListener('submit', this.onCreate);
             document.getElementById('findButton').addEventListener('click', this.onFindById);
+            //document.getElementById('updateButton').addEventListener('click', this.onUpdate);
            // document.getElementById('deleteButton').addEventListener('click',this.onDelete);
             this.client = new DoctorClient();
             this.dataStore.addChangeListener(this.renderDoctorById)
@@ -42,6 +43,17 @@ class DoctorPage extends BaseClass {
                            <div><td>${doctors.isActive}</td></div>
                                `
         }
+
+//         async renderUpdatedDoctors(){
+//                    const table = document.getElementById("updatedResult-info");
+//                    const doctors = this.dataStore.get("doctor");
+//                                      table.innerHTML += `
+//                                  <div><td>${doctors.doctorId}</td> </div>
+//                                   <div><td>${doctors.name}</td></div>
+//                                   <div><td>${doctors.dob}</td></div>
+//                                   <div><td>${doctors.isActive}</td></div>
+//                                       `
+//                }
 
        //Event Handlers
 
@@ -77,6 +89,26 @@ class DoctorPage extends BaseClass {
 this.errorHandler("Error creating! Try again... ");
     }
 }
+
+//        async onUpdate(event){
+//            event.preventDefault();
+//            let name = document.getElementById("update-doctor-name-field").value;
+//            let dob = document.getElementById("update-doctor-dob-field").value;
+//            let doctorId = document.getElementById("doctor-IdField").value;
+//
+//            const updatedDoctor = await this.client.updateDoctor(name,dob,doctorId, this.errorHandler);
+//
+//            this.dataStore.set("doctor", updatedDoctor);
+//            console.log(updatedDoctor);
+//            if(updatedDoctor){
+//            this.showMessage("Updated A Doctor!")
+//            this.renderUpdatedDoctors()
+//            }
+//            else{
+//            this.errorHandler("Error updating Doctor!")
+//            }
+//
+//        }
 
 //    async onDelete(event){
 //        event.preventDefault();
