@@ -35,7 +35,9 @@ public class Doctor {
     public String getDoctorId() {
         return doctorId;
     }
-
+    public void setDob(String dob){
+        this.dob = dob;
+    }
     public String getDob() {
         return dob;
     }

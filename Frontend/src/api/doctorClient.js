@@ -28,12 +28,24 @@ export default class DoctorClient extends BaseClass {
             this.handleError("getDoctor",error,errorCallback)
             }
     }
+//        async updateDoctor(name,dob,doctorId,errorCallback){
+//            try{
+//                const response = await this.client.put(`/doctor`,{
+//                    "doctorId": doctorId,
+//                    "name": name,
+//                    "dob":dob,
+//                    });
+//                    console.log(response.data);
+//            }catch(error){
+//                this.handleError("updateDoctor",error,errorCallback);
+//                }
+//        }
 //this is different
     async createDoctor(name, dob, errorCallback){
         try{
             const response = await this.client.post(`doctor`, {
-                name: name,
-                dob: dob
+                "name": name,
+                "dob": dob
                 });
                 console.log(response.data);
                 return response.data;
@@ -60,18 +72,7 @@ export default class DoctorClient extends BaseClass {
 //                    }
 //    }
 //Todo: Finish this method I stopped it to work on the delete doctor method
-//    async updateDoctor(name,dob,doctorId,isActive,errorCallback){
-//        try{
-//            const response = await this.client.put(`/doctor`,{
-//                name: name,
-//                dob:dob,
-//                doctorId:doctorId,
-//                isActive:isActive});
-//                console.log(response.data);
-//        }catch(error){
-//            this.handleError("updateDoctor",error,errorCallback);
-//            }
-//    }
+
 
         //helper method to log the error and run any error functions. the param is the error recieved from the server
 

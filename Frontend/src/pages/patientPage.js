@@ -6,13 +6,17 @@ class PatientPage extends BaseClass {
 
     constructor() {
         super();
+
 //        this.bindClassMethods(['onCreate', 'renderPatient', 'onGetPatients', 'onGetById'], this);
+
         this.bindClassMethods(['onCreate', 'renderPatients', 'onGetById', 'renderPatient'], this);
         this.dataStore = new DataStore();
     }
     async mount() {
         document.getElementById('createPatient').addEventListener('click', this.onCreate);
         document.getElementById('findPatient').addEventListener('click', this.onGetById);
+
+
 
         this.client = new PatientClient();
 
@@ -26,6 +30,7 @@ class PatientPage extends BaseClass {
             const patientById = this.dataStore.get("patient");
 
 
+
             patientRetrieved.innerHTML +=
              `<tr>
             <td>${patientById.patientId}</td>
@@ -37,6 +42,7 @@ class PatientPage extends BaseClass {
 
 
      async renderPatients() {
+
         const table = document.getElementById("patientTable");
 
         const patients = this.dataStore.get("patients");
@@ -58,11 +64,14 @@ class PatientPage extends BaseClass {
     async onGetById(event) {
         event.preventDefault();
 
+
         let patientId = document.getElementById("add-id-field").value;
 
         const result = await this.client.getPatient(patientId, this.errorHandler);
 
+
         this.dataStore.set("patient",result);
+
 
                 if (result) {
                 console.log(result);
@@ -72,6 +81,7 @@ class PatientPage extends BaseClass {
                     this.errorHandler("Error creating!  Try again...");
                 }
         }
+
 
     async onCreate(event) {
         event.preventDefault();

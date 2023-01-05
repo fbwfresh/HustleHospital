@@ -66,9 +66,12 @@ public class DoctorController {
 
     @PutMapping
     public ResponseEntity<DoctorResponse> updateDoctor(@RequestBody DoctorUpdateRequest doctorUpdateRequest) {
-        Doctor doctor = new Doctor(doctorUpdateRequest.getName(), doctorUpdateRequest.getDob(), doctorUpdateRequest.getDoctorId(), doctorUpdateRequest.isActive());
-        doctorService.updateDoctor(doctor);
-        DoctorResponse doctorResponse = createDoctorResponse(doctor);
+       Doctor oldDoctor = doctorService.findById(doctorUpdateRequest.getDoctorId());
+        oldDoctor.setName(doctorUpdateRequest.getName());
+        oldDoctor.setDob(doctorUpdateRequest.getDob());
+        //Doctor doctor = new Doctor(doctorUpdateRequest.getName(), doctorUpdateRequest.getDob(), doctorUpdateRequest.getDoctorId(), doctorUpdateRequest.isActive());
+        doctorService.updateDoctor(oldDoctor);
+        DoctorResponse doctorResponse = createDoctorResponse(oldDoctor);
         return ResponseEntity.ok(doctorResponse);
     }
     @DeleteMapping("/{doctorId}")
