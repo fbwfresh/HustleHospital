@@ -12,9 +12,9 @@ class DoctorPage extends BaseClass {
 
         //once page loads, set up the event handlers
 
-        async mount() {
-            document.getElementById('createButton').addEventListener('click',this.onCreate);
-            document.getElementById('findButton').addEventListener('click',this.onFindById);
+         mount() {
+            document.getElementById('create-doctorForm').addEventListener('submit', this.onCreate);
+            document.getElementById('findButton').addEventListener('click', this.onFindById);
            // document.getElementById('deleteButton').addEventListener('click',this.onDelete);
             this.client = new DoctorClient();
             this.dataStore.addChangeListener(this.renderDoctorById)
@@ -47,6 +47,7 @@ class DoctorPage extends BaseClass {
 
        async onFindById(event){
         event.preventDefault();
+        event.stopImmediatePropagation();
         let doctorId = document.getElementById("add-id-field").value;
         const foundDoctor = await this.client.getDoctor(doctorId, this.errorHandler);
         this.dataStore.set("doctor",foundDoctor);
@@ -59,7 +60,9 @@ class DoctorPage extends BaseClass {
        }
 
        async onCreate(event){
+        //console.log(this.onCreate);
         event.preventDefault();
+        event.stopImmediatePropagation();
         let name = document.getElementById("add-doctor-name-field").value;
         let dob = document.getElementById("add-doctor-dob-field").value;
 //this is where the doctor gets created on the page by inputting the information we saved into variables
