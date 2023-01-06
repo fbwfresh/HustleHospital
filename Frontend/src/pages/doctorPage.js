@@ -25,11 +25,11 @@ class DoctorPage extends BaseClass {
              const doctorFoundTable = document.getElementById("doctorFoundByIdResult");
                                const doctor = this.dataStore.get("doctor");
 
-                                    doctorFoundTable.innerHTML = `
-                                                         <div><td>ID: ${doctor.doctorId}</td> </div>
-                                                          <div><td>Dr. ${doctor.name}</td></div>
-                                                          <div><td>DOB: ${doctor.dob}</td></div>
-                                                          <div><td>IsActive: ${doctor.isActive}</td></div>
+                                    doctorFoundTable.innerHTML += `
+                                                         <div><td>${doctor.doctorId}</td> </div>
+                                                          <div><td>${doctor.name}</td></div>
+                                                          <div><td>${doctor.dob}</td></div>
+                                                          <div><td>${doctor.isActive}</td></div>
                                                               `
             }
             

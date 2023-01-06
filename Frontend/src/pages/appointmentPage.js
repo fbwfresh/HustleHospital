@@ -41,7 +41,7 @@ class AppointmentPage extends BaseClass {
         let appointmentRetrieved = document.getElementById("result-info");
         let patientById = this.dataStore.get("appointment");
 
-        appointmentRetrieved.innerHTML +=
+        appointmentRetrieved.innerHTML =
         `
 
         <p>${patientById.appointmentDescription}</p>
