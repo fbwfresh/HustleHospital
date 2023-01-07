@@ -27,6 +27,7 @@
     height: 100px;
     text-shadow: 1px 1px 2px red, 0 0 1em blue, 0 0 0.2em blue;
     color: #FBFAF5;
+    padding: 10px;
 }
 
 .header_nav_link {
@@ -117,7 +118,7 @@
     align-items: center;
   background-color: silver;
   overflow: hidden;
-      border: 5px solid green ;
+      border: 5px solid blue;
 
 
 }
@@ -138,7 +139,7 @@
 }
 
 .active {
-    background-color: red;
+    background-color: dodgerblue;
 }
 
 .patientPage {

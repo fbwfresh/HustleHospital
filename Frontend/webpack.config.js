@@ -58,12 +58,6 @@ module.exports = {
       template: './src/DoctorPage.html',
       filename: 'DoctorPage.html',
     }),
-      new HtmlWebpackPlugin({
-        template: './src/Appointment.html',
-        filename: 'Appointment.html',
-
-      inject: false
-    }),
     new HtmlWebpackPlugin({
           template: './src/appointmentPage.html',
           filename: 'appointmentPage.html',

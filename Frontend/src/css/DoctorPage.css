@@ -113,7 +113,7 @@ margin: auto;
     align-items: center;
   background-color: silver;
   overflow: hidden;
-      border: 5px solid green ;
+      border: 5px solid blue;
 
 
 }
@@ -134,7 +134,7 @@ margin: auto;
 }
 
 .active {
-    background-color: red;
+    background-color: dodgerblue;
 }
 
 .site-header {
@@ -143,6 +143,7 @@ margin: auto;
     height: 100px;
     text-shadow: 1px 1px 2px red, 0 0 1em blue, 0 0 0.2em blue;
     color: var(--secondary-color);
+    padding: 10px;
 }
 
 .header {
