@@ -93,10 +93,10 @@
 <div class="card-content2" id="result4">
 <!--    <h2>Appointment retrieved:</h2>-->
 <!--    <p id="result-info"></p>-->
-
+    <h3>Appointment Description:</h3>
     <div id="result-info">
 
-        <h3>Appointment Description:</h3>
+
     </div>
 
 
@@ -112,48 +112,48 @@
 
 </body>
 </html>
-<br>
-<script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+<!--<br>-->
+<!--<script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>-->
 
-<link rel="stylesheet" type="text/css" href="css/QRcode.css">
-<div class="form">
-    <h1>Appointment QR Code</h1>
-    <form>
-        <input type="text" id="website" name="website" placeholder="local host" required />
-        <button type="button" onclick="generateQRCode()">
-            Generate QR Code
-        </button>
-    </form>
+<!--<link rel="stylesheet" type="text/css" href="css/QRcode.css">-->
+<!--<div class="form">-->
+<!--    <h1>Appointment QR Code</h1>-->
+<!--    <form>-->
+<!--        <input type="text" id="website" name="website" placeholder="http://localhost:8080/appointment/" required />-->
+<!--        <button type="button" onclick="generateQRCode()">-->
+<!--            Generate QR Code-->
+<!--        </button>-->
+<!--    </form>-->
 
-    <div id="qrcode-container">
-        <div id="qrcode" class="qrcode"></div>
-        <h4>With some styles</h4>
-        <div id="qrcode-2" class="qrcode"></div>
-    </div>
+<!--    <div id="qrcode-container">-->
+<!--        <div id="qrcode" class="qrcode"></div>-->
+<!--        <h4></h4>-->
+<!--        <div id="qrcode-2" class="qrcode"></div>-->
+<!--    </div>-->
 
-    <script type="text/javascript">
-    function generateQRCode() {
-      let website = document.getElementById("website").value;
-      if (website) {
-        let qrcodeContainer = document.getElementById("qrcode");
-        qrcodeContainer.innerHTML = "";
-        new QRCode(qrcodeContainer, website);
-        /*With some styles*/
-        let qrcodeContainer2 = document.getElementById("qrcode-2");
-        qrcodeContainer2.innerHTML = "";
-        new QRCode(qrcodeContainer2, {
-          text: website,
-          width: 128,
-          height: 128,
-          colorDark: "#5868bf",
-          colorLight: "#ffffff",
-          correctLevel: QRCode.CorrectLevel.H
-        });
-        document.getElementById("qrcode-container").style.display = "block";
-      } else {
-        alert("Please enter a valid URL");
-      }
-    }
-  </script>
-</div>
+<!--    <script type="text/javascript">-->
+<!--    function generateQRCode() {-->
+<!--      let website = document.getElementById("website").value;-->
+<!--      if (website) {-->
+<!--        let qrcodeContainer = document.getElementById("qrcode");-->
+<!--        qrcodeContainer.innerHTML = "";-->
+<!--        new QRCode(qrcodeContainer, website);-->
+<!--&lt;!&ndash;        /*With some styles*/&ndash;&gt;-->
+<!--&lt;!&ndash;        let qrcodeContainer2 = document.getElementById("qrcode-2");&ndash;&gt;-->
+<!--&lt;!&ndash;        qrcodeContainer2.innerHTML = "";&ndash;&gt;-->
+<!--&lt;!&ndash;        new QRCode(qrcodeContainer2, {&ndash;&gt;-->
+<!--&lt;!&ndash;          text: website,&ndash;&gt;-->
+<!--&lt;!&ndash;          width: 128,&ndash;&gt;-->
+<!--&lt;!&ndash;          height: 128,&ndash;&gt;-->
+<!--&lt;!&ndash;          colorDark: "#5868bf",&ndash;&gt;-->
+<!--&lt;!&ndash;          colorLight: "#ffffff",&ndash;&gt;-->
+<!--&lt;!&ndash;          correctLevel: QRCode.CorrectLevel.H&ndash;&gt;-->
+<!--&lt;!&ndash;        });&ndash;&gt;-->
+<!--        document.getElementById("qrcode-container").style.display = "block";-->
+<!--      } else {-->
+<!--        alert("Please enter a valid URL");-->
+<!--      }-->
+<!--    }-->
+<!--  </script>-->
+<!--</div>-->
 

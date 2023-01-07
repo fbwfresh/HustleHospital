@@ -25,7 +25,7 @@ class PatientPage extends BaseClass {
     }
 
     async renderPatient() {
-            const patientRetrieved = document.getElementById("result");
+            const patientRetrieved = document.getElementById("doctorFoundByIdResult");
             //let content = "";
             const patientById = this.dataStore.get("patient");
 
@@ -81,6 +81,8 @@ class PatientPage extends BaseClass {
                     this.errorHandler("Error creating!  Try again...");
                 }
         }
+
+
 
 
     async onCreate(event) {

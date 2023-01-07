@@ -41,7 +41,7 @@ class AppointmentPage extends BaseClass {
         let appointmentRetrieved = document.getElementById("result-info");
         let patientById = this.dataStore.get("appointment");
 
-        appointmentRetrieved.innerHTML +=
+        appointmentRetrieved.innerHTML =
         `
 
         <p>${patientById.appointmentDescription}</p>
@@ -72,6 +72,28 @@ class AppointmentPage extends BaseClass {
                     this.errorHandler("Error creating!  Try again...");
                 }
         }
+              generateQRCode() {
+              let website = document.getElementById("website").value;
+              if (website) {
+                let qrcodeContainer = document.getElementById("qrcode");
+                qrcodeContainer.innerHTML = "";
+                new QRCode(qrcodeContainer, website);
+                /*With some styles*/
+                let qrcodeContainer2 = document.getElementById("qrcode-2");
+                qrcodeContainer2.innerHTML = "";
+                new QRCode(qrcodeContainer2, {
+                  text: website,
+                  width: 128,
+                  height: 128,
+                  colorDark: "#5868bf",
+                  colorLight: "#ffffff",
+                  correctLevel: QRCode.CorrectLevel.H
+                });
+                document.getElementById("qrcode-container").style.display = "block";
+              } else {
+                alert("Please enter a valid URL");
+              }
+            }
 
     async onCreate(event) {
         event.preventDefault();
@@ -80,6 +102,8 @@ class AppointmentPage extends BaseClass {
         let doctorId = document.getElementById("add-doctorId-field").value;
         let date = document.getElementById("add-date-field").value;
         let appointmentDescription = document.getElementById("add-appointmentDescription-field").value;
+
+
 
         const createdAppointment = await this.client.createAppointment(patientId, doctorId, date, appointmentDescription, this.errorHandler);
         this.dataStore.set("appointments",createdAppointment);
