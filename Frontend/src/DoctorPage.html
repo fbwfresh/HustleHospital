@@ -1,35 +1,168 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+
     <title>Doctor Page</title>
+
   <script type="text/javascript" src="doctorPage.js"></script>
-  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <link rel="stylesheet" type="text/css" href="css/DoctorPage.css">
   <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+  <style>
+            table {
+                border-collapse: collapse;
+            }
+            th {
+                background-color:black;
+                Color:white;
+            }
+            th, td {
+                width:150px;
+                text-align:center;
+                border:1px solid black;
+                padding:5px
+
+            }
+            .geeks {
+                border-right:hidden;
+            }
+            .gfg {
+                border-collapse:separate;
+                border-spacing:0 15px;
+            }
+            h1 {
+                color:#EEDEC5;
+            }
+        </style>
 </head>
-<body>
+<body class="background">
+<header class="header">
+  <div class="site-header">
+    <h1>  Hustle Hospital  </h1>
+  </div>
+
+
+</header>
+
+<div class="navBar">
+  <a class="homePage" href="HustleHospital.html">HomePage</a>
+  <a class="patientPage" href="patients.html">Patient Portal</a>
+  <a class="active" href="DoctorPage.html">Doctor Portal</a>
+  <a class="appointmentPage" href="appointmentPage.html">Appointment Portal</a>
+</div>
+
 <div class="newDoctorCard">
   <h2>Input New Doctor</h2>
   <form class="card-content" id="create-doctorForm">
     <p class="form-field">
       <label>Name</label>
-      <input type="text" required class="validated-field" id="add-doctor-name-field">
+      <input type="text" placeholder="Michael Jackson" required class="validated-field" id="add-doctor-name-field">
       <label>DOB</label>
-      <input type="text" required class="validated-field" id="add-doctor-dob-field">
-<!--      <label for="active">Is Doctor Active:</label>-->
-<!--      <select name="active" id="active">-->
-<!--        <option value="null"></option>-->
-<!--        <option value="Active">Active</option>-->
-<!--        <option value="Inactive">Inactive</option>-->
-<!--      </select>-->
+      <input type="text" placeholder="MM/DD/YYYY" required class="validated-field" id="add-doctor-dob-field">
     </p>
-    <button type="submit">Submit</button>
+    <button type="submit" >Create</button>
   </form>
 </div>
 <div class="card-content" id="result">
-  <h2>Result:</h2>
-  <p id="result-info"></p>
+  <table id="result-info">
+    <tr>
+      <th>Id</th>
+      <th>Dr.</th>
+      <th>DOB</th>
+      <th>IsActive</th>
+    </tr>
+  </table>
 </div>
 
+<!--<div class="newDoctorCard">-->
+<!--  <h2>Update Existing Doctor</h2>-->
+<!--  <form class="card-content" id="update-doctorForm">-->
+<!--    <p class="form-field">-->
+<!--      <label>Name</label>-->
+<!--      <input type="text" placeholder="Joe Blow" required class="validated-field" id="update-doctor-name-field">-->
+<!--      <label>DOB</label>-->
+<!--      <input type="text" placeholder="MM/DD/YYYY" required class="validated-field" id="update-doctor-dob-field">-->
+<!--      <label>Doctor Id</label>-->
+<!--      <input type="text" placeholder="..." required class="validated-field" id="doctor-IdField">-->
+<!--    </p>-->
+<!--    <button type="submit" id="updateButton" >Update</button>-->
+<!--  </form>-->
+<!--</div>-->
+<!--<div class="card-content" id="updatedResult">-->
+<!--  <table id="updatedResult-info">-->
+<!--    <tr>-->
+<!--      <th>Id</th>-->
+<!--      <th>Dr.</th>-->
+<!--      <th>DOB</th>-->
+<!--      <th>IsActive</th>-->
+<!--    </tr>-->
+<!--  </table>-->
+<!--</div>-->
+
+<div class="newDoctorCard">
+  <h2>Find by DoctorId</h2>
+  <form class="card-content" id="findById-doctorForm">
+    <p class="form-field">
+      <label>Doctor Id</label>
+      <input type="text" required class="validated-field" id="add-id-field">
+    </p>
+    <button type="submit" id="findButton">Find</button>
+  </form>
+</div>
+<div class="card-content" id="result2">
+  <table id="doctorFoundByIdResult">
+    <tr>
+      <th id="doctorIdField">Id</th>
+      <th id="doctorNameField">Dr.</th>
+      <th id="doctorDobField">DOB</th>
+      <th id="doctorIsActiveField">IsActive</th>
+    </tr>
+  </table>
+</div>
 </body>
 </html>
+
+<br>
+
+<script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+
+<link rel="stylesheet" type="text/css" href="css/QRcode.css">
+<div class="form">
+  <h1>Doctors QR Code</h1>
+  <form>
+    <input type="text" id="website" name="website" placeholder="http://localhost:8080/doctor/" required />
+    <button type="button" onclick="generateQRCode()">
+      Generate QR Code
+    </button>
+  </form>
+
+  <div id="qrcode-container">
+    <div id="qrcode" class="qrcode"></div>
+    <h4></h4>
+    <div id="qrcode-2" class="qrcode"></div>
+  </div>
+
+  <script type="text/javascript">
+    function generateQRCode() {
+      let website = "http://localhost:8080/doctor/" + document.getElementById("website").value;
+      if (website) {
+        let qrcodeContainer = document.getElementById("qrcode");
+        qrcodeContainer.innerHTML = "";
+        new QRCode(qrcodeContainer, website);
+<!--        /*With some styles*/-->
+<!--        let qrcodeContainer2 = document.getElementById("qrcode-2");-->
+<!--        qrcodeContainer2.innerHTML = "";-->
+<!--        new QRCode(qrcodeContainer2, {-->
+<!--          text: website,-->
+<!--          width: 128,-->
+<!--          height: 128,-->
+<!--          colorDark: "#5868bf",-->
+<!--          colorLight: "#ffffff",-->
+<!--          correctLevel: QRCode.CorrectLevel.H-->
+<!--        });-->
+        document.getElementById("qrcode-container").style.display = "block";
+      } else {
+        alert("Please enter a valid URL");
+      }
+    }
+  </script>
+</div>

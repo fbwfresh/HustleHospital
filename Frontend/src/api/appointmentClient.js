@@ -1,13 +1,13 @@
 import BaseClass from "../util/baseClass";
 import axios from 'axios'
 
-export default class PatientClient extends BaseClass {
+export default class AppointmentClient extends BaseClass {
 
     constructor(props = {}){
             super();
 //            const methodsToBind = ['clientLoaded', 'getPatient', 'createPatient', 'getAllPatients'];
 //            const methodsToBind = ['clientLoaded', 'getPatient', 'createPatient'];
-            const methodsToBind = ['clientLoaded', 'createPatient', 'getAllPatients', 'getPatient'];
+            const methodsToBind = ['clientLoaded', 'createAppointment', 'getAppointment', 'getAllAppointments'];
             this.bindClassMethods(methodsToBind, this);
             this.props = props;
             this.clientLoaded(axios);
@@ -18,32 +18,35 @@ export default class PatientClient extends BaseClass {
             this.props.onReady();
         }
     }
-    async getPatient(patientId, errorCallback) {
+    async getAppointment(patientId, errorCallback) {
             try {
-                const response = await this.client.get(`/patient/${patientId}`);
+                const response = await this.client.get(`/appointment/${patientId}`);
                 return response.data;
             } catch (error) {
-                this.handleError("getPatient", error, errorCallback)
+                this.handleError("getAppointment", error, errorCallback)
             }
         }
-    async getAllPatients(errorCallback) {
+    async getAllAppointments(errorCallback) {
         try {
-            const response = await this.client.get(`/patient/all`);
+            const response = await this.client.get(`/appointment/all`);
             return response.data;
         } catch (error) {
-            this.handleError("getAllPatients", error, errorCallback);
+            this.handleError("getAllAppointments", error, errorCallback);
         }
     }
-    async createPatient(name, dob, insurance, errorCallback) {
+    async createAppointment(patientId, doctorId, date, appointmentDescription, errorCallback) {
         try {
-            const response = await this.client.post(`/patient`, {
-                "name": name,
-                "dob": dob,
-                "insurance": insurance
+            const response = await this.client.post(`appointment`, {
+
+                "patientId": patientId,
+                "doctorId": doctorId,
+                "date": date,
+                "appointmentDescription": appointmentDescription,
+
             });
             return response.data;
         } catch (error) {
-            this.handleError("createPatient", error, errorCallback);
+            this.handleError("createAppointment", error, errorCallback);
         }
     }
     handleError(method, error, errorCallback) {

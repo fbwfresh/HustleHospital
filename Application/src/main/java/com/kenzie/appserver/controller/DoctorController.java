@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 
@@ -21,10 +22,6 @@ public class DoctorController {
     DoctorController(DoctorService doctorService) {
         this.doctorService = doctorService;
     }
-//    @GetMapping("/hello")
-//    public ResponseEntity<String> hello(){
-//        return ResponseEntity.ok("hello user");
-//    }
 
     @GetMapping("/{doctorId}")
     public ResponseEntity<DoctorResponse> getDoctor(@PathVariable("doctorId") String doctorId) {
@@ -37,6 +34,7 @@ public class DoctorController {
         doctorResponse.setDoctorId(doctor.getDoctorId());
         doctorResponse.setName(doctor.getName());
         doctorResponse.setDob(doctor.getDob());
+        doctorResponse.setActive(doctor.isActive());
         return ResponseEntity.ok(doctorResponse);
     }
 
@@ -50,7 +48,7 @@ public class DoctorController {
 
     }
 
-    @PostMapping//("/all") //changed this to all to test the endpoint
+    @PostMapping
     public ResponseEntity<DoctorResponse> addNewDoctor(@RequestBody DoctorCreateRequest doctorCreateRequest) {
         Doctor doctor = new Doctor(
                 doctorCreateRequest.getName(),
@@ -68,11 +66,12 @@ public class DoctorController {
 
     @PutMapping
     public ResponseEntity<DoctorResponse> updateDoctor(@RequestBody DoctorUpdateRequest doctorUpdateRequest) {
-        Doctor doctor = new Doctor(doctorUpdateRequest.getName(), doctorUpdateRequest.getDob());
-        doctor.setDoctorId(doctorUpdateRequest.getDoctorId());
-        doctorService.updateDoctor(doctor);
-        DoctorResponse doctorResponse = createDoctorResponse(doctor);
-
+       Doctor oldDoctor = doctorService.findById(doctorUpdateRequest.getDoctorId());
+        oldDoctor.setName(doctorUpdateRequest.getName());
+        oldDoctor.setDob(doctorUpdateRequest.getDob());
+        //Doctor doctor = new Doctor(doctorUpdateRequest.getName(), doctorUpdateRequest.getDob(), doctorUpdateRequest.getDoctorId(), doctorUpdateRequest.isActive());
+        doctorService.updateDoctor(oldDoctor);
+        DoctorResponse doctorResponse = createDoctorResponse(oldDoctor);
         return ResponseEntity.ok(doctorResponse);
     }
     @DeleteMapping("/{doctorId}")

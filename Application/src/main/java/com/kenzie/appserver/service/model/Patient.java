@@ -6,9 +6,9 @@ public class Patient {
     private final String patientId;
     private final String name;
     private final String dob;
-    private final boolean insurance;
+    private final String insurance;
 
-    public Patient(String patientId, String name, String dob, boolean insurance) {
+    public Patient(String patientId, String name, String dob, String insurance) {
 //        this.patientId = randomUUID().toString();
         this.patientId = patientId;
         this.name = name;
@@ -28,7 +28,7 @@ public class Patient {
         return dob;
     }
 
-    public boolean isInsurance() {
+    public String isInsurance() {
         return insurance;
     }
 }

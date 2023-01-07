@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script type="text/javascript" src="appointmentPage.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/DoctorPage.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <style>
+            table {
+                border-collapse: collapse;
+            }
+            th {
+                background-color:black;
+                Color:white;
+            }
+            th, td {
+                width:150px;
+                text-align:center;
+                border:1px solid black;
+                padding:5px
+
+            }
+            .geeks {
+                border-right:hidden;
+            }
+            .gfg {
+                border-collapse:separate;
+                border-spacing:0 15px;
+            }
+            h1 {
+                color:#EEDEC5;
+            }
+        </style>
+</head>
+<body class="background">
+<header class="header">
+    <div class="site-header">
+        <h1> Hustle Hospital </h1>
+    </div>
+
+
+</header>
+
+<div class="navBar">
+    <a class="homePage" href="HustleHospital.html">HomePage</a>
+    <a class="patientPage" href="patients.html">Patient Portal</a>
+    <a class="doctorPage" href="DoctorPage.html">Doctor Portal</a>
+    <a class="active" href="appointmentPage.html">Appointment Portal</a>
+</div>
+
+<div class="newPatientCard">
+    <h2>Input New Appointment</h2>
+    <form class="card-content" id="create-appointmentForm">
+        <p class="form-field">
+            <label>PatientId</label>
+            <input type="text" required class="validated-field" id="add-patientId-field">
+            <label>DoctorId</label>
+            <input type="text" required class="validated-field" id="add-doctorId-field">
+            <label>Date</label>
+            <input type="text" required class="validated-field" id="add-date-field">
+            <label>Appointment Description</label>
+            <input type="text" required class="validated-field" id="add-appointmentDescription-field">
+        </p>
+        <button id="createAppointment" type="submit">Submit</button>
+    </form>
+</div>
+
+<div class="card-content2" id="result3" >
+
+<!--    <h2>Appointments</h2>-->
+    <table class="table" id="appointmentTable">
+        <tr>
+            <th>Patient Id</th>
+            <th>Doctor Id</th>
+            <th>Date</th>
+            <th>Appointment Description</th>
+        </tr>
+    </table>
+</div>
+
+<div class="newPatientCard">
+    <h2>Find by Patient Id</h2>
+    <form class="card-content" id="findById-appointmentForm">
+        <p class="form-field">
+            <!--            <label>PatientId</label>&ndash;&gt;-->
+            <!--            <input type="text" required class="validated-field" id="add-patientId-field">-->
+            <label>Patient Id</label>
+            <input type="text" required class="validated-field" id="add-id-field">
+        </p>
+        <button id="findAppointment" type="submit">Submit</button>
+    </form>
+</div>
+
+<div class="card-content2" id="result4">
+<!--    <h2>Appointment retrieved:</h2>-->
+<!--    <p id="result-info"></p>-->
+    <h3>Appointment Description:</h3>
+    <div id="result-info">
+
+
+    </div>
+
+
+<!--    <table class="table" id="result-info">-->
+<!--        <tr>-->
+<!--            <th>Patient Id</th>-->
+<!--            <th>Doctor Id</th>-->
+<!--            <th>Date</th>-->
+<!--            <th>Appointment Description</th>-->
+<!--        </tr>-->
+<!--    </table>-->
+</div>
+
+</body>
+</html>
+<!--<br>-->
+<!--<script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>-->
+
+<!--<link rel="stylesheet" type="text/css" href="css/QRcode.css">-->
+<!--<div class="form">-->
+<!--    <h1>Appointment QR Code</h1>-->
+<!--    <form>-->
+<!--        <input type="text" id="website" name="website" placeholder="http://localhost:8080/appointment/" required />-->
+<!--        <button type="button" onclick="generateQRCode()">-->
+<!--            Generate QR Code-->
+<!--        </button>-->
+<!--    </form>-->
+
+<!--    <div id="qrcode-container">-->
+<!--        <div id="qrcode" class="qrcode"></div>-->
+<!--        <h4></h4>-->
+<!--        <div id="qrcode-2" class="qrcode"></div>-->
+<!--    </div>-->
+
+<!--    <script type="text/javascript">-->
+<!--    function generateQRCode() {-->
+<!--      let website = document.getElementById("website").value;-->
+<!--      if (website) {-->
+<!--        let qrcodeContainer = document.getElementById("qrcode");-->
+<!--        qrcodeContainer.innerHTML = "";-->
+<!--        new QRCode(qrcodeContainer, website);-->
+<!--&lt;!&ndash;        /*With some styles*/&ndash;&gt;-->
+<!--&lt;!&ndash;        let qrcodeContainer2 = document.getElementById("qrcode-2");&ndash;&gt;-->
+<!--&lt;!&ndash;        qrcodeContainer2.innerHTML = "";&ndash;&gt;-->
+<!--&lt;!&ndash;        new QRCode(qrcodeContainer2, {&ndash;&gt;-->
+<!--&lt;!&ndash;          text: website,&ndash;&gt;-->
+<!--&lt;!&ndash;          width: 128,&ndash;&gt;-->
+<!--&lt;!&ndash;          height: 128,&ndash;&gt;-->
+<!--&lt;!&ndash;          colorDark: "#5868bf",&ndash;&gt;-->
+<!--&lt;!&ndash;          colorLight: "#ffffff",&ndash;&gt;-->
+<!--&lt;!&ndash;          correctLevel: QRCode.CorrectLevel.H&ndash;&gt;-->
+<!--&lt;!&ndash;        });&ndash;&gt;-->
+<!--        document.getElementById("qrcode-container").style.display = "block";-->
+<!--      } else {-->
+<!--        alert("Please enter a valid URL");-->
+<!--      }-->
+<!--    }-->
+<!--  </script>-->
+<!--</div>-->
+

@@ -1,87 +1,77 @@
 import BaseClass from "../util/baseClass";
 import DataStore from "../util/DataStore";
-import ExampleClient from "../api/exampleClient";
+import PatientClient from "../api/patientClient";
 
-/**
- * Logic needed for the view playlist page of the website.
- */
 class HustleHospitalMainPage extends BaseClass {
 
     constructor() {
         super();
-        this.bindClassMethods(['onGet', 'onCreate', 'renderExample'], this);
+        this.bindClassMethods(['onCreate', 'renderPatient', 'onGetPatients', 'onGetById'], this);
         this.dataStore = new DataStore();
     }
+    async mount() {
+        document.getElementById('create-patientForm').addEventListener('submit', this.onCreate);
+        document.getElementById('findById-patientForm').addEventListener('submit', this.onGetById);
 
-       /**
-         * Once the page has loaded, set up the event handlers and fetch the concert list.
-         */
-        async mount() {
-            document.getElementById('create-patientForm').addEventListener('submit', this.onGet);
-            document.getElementById('create-doctorForm').addEventListener('submit', this.onCreate);
-            //Change this new ExampleClient() to HospitalClient() when its made
-            this.client = new ExampleClient();
+        this.client = new PatientClient();
 
-            this.dataStore.addChangeListener(this.renderExample)
-        }
-
- // Render Methods --------------------------------------------------------------------------------------------------
-
- async renderExample() {
-        let resultArea = document.getElementById("result-info");
-
-    //todo: Not sure what dataStore.get(example) means
-    //get its from the basically a database from the document
-        const example = this.dataStore.get("example");
-        if (example) {
-            resultArea.innerHTML = `
-                <div>ID: ${example.id}</div>
-                <div>Name: ${example.name}</div>
-            `
-        } else {
-            resultArea.innerHTML = "No Item";
-        }
+        this.dataStore.addChangeListener(this.renderPatient)
+        //this.onGetPatients()
     }
 
-    // Event Handlers --------------------------------------------------------------------------------------------------
-/*ToDo I still have to do the Event Handlers and possibly name them something else */
-async onGet(event) {
-        // Prevent the page from refreshing on form submit
-        event.preventDefault();
+     async renderPatient() {
 
-        let id = document.getElementById("id-field").value;
-        this.dataStore.set("Patient", null);
-
-        let result = await this.client.getExample(id, this.errorHandler);
-        this.dataStore.set("Patient", result);
-        if (result) {
-            this.showMessage(`Got ${result.name}!`)
+        let patientRetrieved = document.getElementById("result-info");
+        //let content = "";
+        let patientById = this.dataStore.get("patient");
+        if(patientById) {
+        patientRetrieved.innerHTML = `${patientById.name}`;
         } else {
-            this.errorHandler("Error doing GET!  Try again...");
+        patientRetrieved.innerHTML = "No Patient Found";
+
         }
-    }
+        }
+
+    async onGetPatients() {
+        let result = await this.client.getAllPatients(this.errorHandler);
+        this.dataStore.set("patients",result);
+        }
+
+    async onGetById(event) {
+        //event.preventDefault();
+
+        let patientId = document.getElementById("add-id-field").value;
+
+        let result = await this.client.getPatient(patientId, this.errorHandler);
+
+        this.dataStore.set("patient",result);
+
+                if (result) {
+                console.log(result);
+                    this.showMessage(`"Successful"`)
+                } else {
+                    this.errorHandler("Error creating!  Try again...");
+                }
+        }
 
     async onCreate(event) {
-        // Prevent the page from refreshing on form submit
         event.preventDefault();
-        this.dataStore.set("Doctor", null);
 
-        let name = document.getElementById("create-name-field").value;
-        //TODO: change the method in client
-        const createdDoctor = await this.client.createExample(name, this.errorHandler);
-        this.dataStore.set("Doctor", createdDoctor);
+        let name = document.getElementById("add-name-field").value;
+        let dob = document.getElementById("add-dob-field").value;
+        let insurance = document.getElementById("add-insurance-field").value;
 
-        if (createdDoctor) {
-            this.showMessage(`Created ${createdExample.name}!`)
+        const createdPatient = await this.client.createPatient(name, dob, insurance, this.errorHandler);
+
+        if (createdPatient) {
+        console.log(createdPatient);
+            this.showMessage(`Created ${createdPatient.name}!`)
         } else {
             this.errorHandler("Error creating!  Try again...");
         }
+        this.onGetPatients()
     }
 }
-
-/**
- * Main method to run when the page contents have loaded.
- */
 const main = async () => {
     const HustleHospitalMainPage = new HustleHospitalMainPage();
     HustleHospitalMainPage.mount();

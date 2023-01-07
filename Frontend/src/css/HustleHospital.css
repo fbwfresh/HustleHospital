@@ -26,7 +26,8 @@
     line-height: 40px;
     height: 100px;
     text-shadow: 1px 1px 2px red, 0 0 1em blue, 0 0 0.2em blue;
-    color: var(--secondary-color);
+    color: #FBFAF5;
+    padding: 10px;
 }
 
 .header_nav_link {
@@ -111,3 +112,48 @@
     display: block;
 }
 
+.navBar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  background-color: silver;
+  overflow: hidden;
+      border: 5px solid blue;
+
+
+}
+.navBar a {
+    width: 33%;
+  float: left;
+  color: black;
+  text-align: justify;
+  padding: 20px 20px;
+  text-decoration: none;
+  font-size: 20px;
+
+}
+
+.navBar a:hover {
+  background-color: white;
+  color: purple;
+}
+
+.active {
+    background-color: dodgerblue;
+}
+
+.patientPage {
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.images{
+display: flex;
+justify-content: center;
+}
+
+#hospital {
+width: 45%;
+height: auto;
+}

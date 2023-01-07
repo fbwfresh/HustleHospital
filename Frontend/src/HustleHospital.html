@@ -4,60 +4,77 @@
     <script type="text/javascript" src="HustleHospitalMainPage.js"></script>
     <link rel="stylesheet" type="text/css" href="css/HustleHospital.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <style>
+        h1{
+        color: #EEDEC5
+        }
+    </style>
 </head>
 <body class="background">
     <header class="header">
         <div class="site-header">
             <h1> Hustle Hospital </h1>
         </div>
-        <div class="patientPageLink">
-            <a class ="patientPageLink" href="patients.html"><h2>Patient Page</h2></a>
-        </div>
-        <div class="doctorPageLink">
-            <a class ="doctorPageLink" href="DoctorPage.html"><h2>Doctor Page</h2></a>
-        </div>
+
+
     </header>
-    <div class="newPatientCard">
-        <h2>Input New Patient</h2>
-        <form class="card-content" id="create-patientForm">
-            <p class="form-field">
-                <label>Name</label>
-                <input type="text" required class="validated-field" id="add-name-field">
-                <label>DOB</label>
-                <input type="text" required class="validated-field" id="add-dob-field">
-                <label for="insurance">Is Patient Insured:</label>
-                <select name="insurance" id="insurance">
-                    <option value="null"></option>
-                    <option value="Insured">Insured</option>
-                    <option value="No Insurance">Not Insured</option>
-                </select>
-            </p>
-            <button type="submit">Submit</button>
-        </form>
+
+    <div class="navBar">
+        <a class="active" href="HustleHospital.html">HomePage</a>
+        <a class="patientPage" href="patients.html">Patient Portal</a>
+        <a class="doctorPage" href="DoctorPage.html">Doctor Portal</a>
+        <a class="doctorPage" href="appointmentPage.html">Appointment Portal</a>
+    </div>
+    <div class="images">
+    <img id="hospital" src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8aG9zcGl0YWx8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60" alt="Hospital Image"
+     >
+
+    </div>
+    </div>
     </div>
 
-<div class="newDoctorCard">
-    <h2>Input New Doctor</h2>
-    <form class="card-content" id="create-doctorForm">
-        <p class="form-field">
-            <label>Name</label>
-            <input type="text" required class="validated-field" id="add-doctor-name-field">
-            <label>DOB</label>
-            <input type="text" required class="validated-field" id="add-doctor-dob-field">
-            <label for="active">Is Doctor Active:</label>
-            <select name="active" id="active">
-                <option value="null"></option>
-                <option value="Active">Active</option>
-                <option value="Inactive">Inactive</option>
-            </select>
-        </p>
-        <button type="submit">Submit</button>
-    </form>
-</div>
-    <div class="card-content" id="result">
-        <h2>Result:</h2>
-        <p id="result-info"></p>
-    </div>
+
+<!--    <div class="newPatientCard">-->
+<!--        <h2>Input New Patient</h2>-->
+<!--        <form class="card-content" id="create-patientForm">-->
+<!--            <p class="form-field">-->
+<!--                <label>Name</label>-->
+<!--                <input type="text" required class="validated-field" id="add-name-field">-->
+<!--                <label>DOB</label>-->
+<!--                <input type="text" required class="validated-field" id="add-dob-field">-->
+<!--                <label for="insurance">Is Patient Insured:</label>-->
+<!--                <select name="insurance" id="insurance">-->
+<!--                    <option value="null"></option>-->
+<!--                    <option value="Insured">Insured</option>-->
+<!--                    <option value="No Insurance">Not Insured</option>-->
+<!--                </select>-->
+<!--            </p>-->
+<!--            <button type="submit">Submit</button>-->
+<!--        </form>-->
+<!--    </div>-->
+
+<!--<div class="newDoctorCard">-->
+<!--    <h2>Input New Doctor</h2>-->
+<!--    <form class="card-content" id="create-doctorForm">-->
+<!--        <p class="form-field">-->
+<!--            <label>Name</label>-->
+<!--            <input type="text" required class="validated-field" id="add-doctor-name-field">-->
+<!--            <label>DOB</label>-->
+<!--            <input type="text" required class="validated-field" id="add-doctor-dob-field">-->
+<!--            <label for="active">Is Doctor Active:</label>-->
+<!--            <select name="active" id="active">-->
+<!--                <option value="null"></option>-->
+<!--                <option value="Active">Active</option>-->
+<!--                <option value="Inactive">Inactive</option>-->
+<!--            </select>-->
+<!--        </p>-->
+<!--        <button type="submit">Submit</button>-->
+<!--    </form>-->
+<!--</div>-->
+<!--    <div class="card-content" id="result">-->
+<!--        <h2>Result:</h2>-->
+<!--        <p id="result-info"></p>-->
+<!--    </div>-->
 
 </body>
 </html>
