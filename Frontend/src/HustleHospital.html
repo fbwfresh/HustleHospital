@@ -5,19 +5,100 @@
     <link rel="stylesheet" type="text/css" href="css/HustleHospital.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
     <style>
-        h1{
+     body{
+    margin: 0;
+    padding: 0;
+    background-image: url(https://i0.wp.com/communitynewspapers.com/wp-content/uploads/2022/01/1.-Cover-Page-scaled.jpg?fit=2560%2C1707&ssl=1);
+    background-size: cover;
+}
+    .loginBox{
+        width: 320px;
+        height: 420px;
+        background: #000;
+        color: #fff;
+        top: 60%;
+        left: 50%;
+        position: absolute;
+        transform: translate(-50%,-50%);
+        box-sizing: border-box;
+        padding: 70px 30px;
+    }
+
+    .avatar{
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        position: absolute;
+        top: -50px;
+        left: calc(50% - 50px);
+    }
+
+        #HustleHospitalTitle{
         color: #EEDEC5
         }
+        #LoginBoxHeader{
+            margin: 0;
+            padding:0 0 20px;
+            text-align: center;
+            font-size: 22px;
+        }
+        .loginBox p{
+            margin:0;
+            padding:0;
+            font-weight: bold;
+            }
+        .loginBox input{
+            width: 75%;
+            margin-bottom: 20px;
+        }
+
+       .loginBox input[type="text"], input[type="password"]{
+        border: none;
+        border-bottom: 1px solid #fff;
+        background: transparent;
+        outline: none;
+        height: 40px;
+        color: #fff;
+        font-size: 16px;
+       }
+
+       .loginBox button[type="submit"]{
+        border: none;
+        outline: none;
+        height: 40px;
+        background: #fb2525;
+        color: #fff;
+        font-size: 18px;
+
+       }
+
+       .loginBox button[type="submit"]:hover{
+        cursor: pointer;
+        background: #ffc107;
+        color: #000;
+       }
+
+       .loginBox a{
+        text-decoration: none;
+        font-size: 12px;
+        line-height: 20px;
+        color: darkgrey;
+       }
+
+       .loginBox a:hover {
+       color: white;
+       }
+
+
     </style>
 </head>
-<body class="background">
+<body>
     <header class="header">
         <div class="site-header">
-            <h1> Hustle Hospital </h1>
+            <h1 id="HustleHospitalTitle"> Hustle Hospital </h1>
         </div>
-
-
     </header>
+
 
     <div class="navBar">
         <a class="active" href="HustleHospital.html">HomePage</a>
@@ -25,9 +106,22 @@
         <a class="doctorPage" href="DoctorPage.html">Doctor Portal</a>
         <a class="doctorPage" href="appointmentPage.html">Appointment Portal</a>
     </div>
+    <div class="loginBox">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANgAAADpCAMAAABx2AnXAAABUFBMVEX///+lZjqZyzQtHx+OXDudzz2gzz0rHh+oaDsoHB4VAAClZTorHR0ZAACqaTssHR0RAAAAAACayzQkGh4gGB2mXzsoGRmhXi2iYTKVyiiZzzPk4+MmGiFgPiudYTgjERGVj4+fWyaUyiI3KSn29fQkEhJ/eHitqam1srFGPDxfV1c+KCGZYDeIVTNjW1lDLSR9TzFSNCa6jW317+r7/vfw+OLW6rPp89b0+e2awjPGwsJWTEs/MjLX1NR0bm+zrK6LhYbMycuinZxDNzhsRCxmPyqUjo55cnODcWbk1s3FmoHNrJjcx7nt5N7UuKWye1bGoIYXERzgz8SOURxpQCKZfmx0XVAvFQ6IUSrLua2+j2+tckrE4pOlsUuqx1jM5aSlcziihTierja02XCgjjbi78aemzTT6q+q1FqeujKjezjG4ZS423uaqzaeoTaglDd3wpg2AAAOLElEQVR4nN2d61vbOBbGMabYjhMnxM6dJI3DpdQOSWjLpUBLmbCzvTB0O7O7dGC3tGxbaJmZ///bSnbiS+IEO9GRQt9vpTyWf5yjo6MjWZqZAdZS6enq4cr67tpeHWlvbXd95f7qg/3SEnTDkNo/fLabTcUS1eVsNpnkkeLJbLZaTSRSsfrDlef7rF9wHO0f7i6kEsvZOB+seLaaSKV2D/fvlOn2D9ZSiewQJK+yidTeylPWrxtSpfvJWDUMla1kNZZYuQNO+XQ9lhjmfsMUr6Z2H7B+8ZFaWq3HliNS2crGsqvT29sO67HwLtivZGxvSq22KiSSY2PZVlubwr72dC0mTYRlo/2NNUefSuup8Z3Qq8RaiTWLVw/GDBkBysamaFg7TE3WuXyKp6bGHVcXCHKh8JhaYU1k60GKJBZW4hlrJqwXZO01NWSlZfJcPB87YM21VCcT5vu1sMoYbL0KwsUnE2yTkEPigaOnbJ0l1z4YFwogBwzB1mA6mK0YO2e8nwDk4rO7rLhKgI6IlWI1P1snlvkGK7vGhutFDJYL9TI2if5DyMhhKfuQBdf+AjQXyj9YzDqhexhW9YA+Vwk01HcVZ5B+HNIAYzFI/wQeOrDo+2KJQujgWQxldDyRQVyEH8RsxSinVUt81BWVMUW7k+1H8kTBp0hgtDvZ0zB5oiBIKtKiwBuO6ujHi5q2uCiFI4wn6S4urY62GCLSNLXeLndajTnTrHBIosiJHCdXKqY512h1ym0D/85tfLRrHyOmmIKk8Ua70zA5RVFEJG5A+KfoPzmz0So3eRXRDSejHD0OgotTSUnTEFNFVIJ4gggVpWK2yoY2FK5Kt5K/EgQmqHy5wQXaaJRkZFiz1ebVwPW1ZbpF4UEw5IHtBqdEhHJtp1QabU0dNFtyjyrYs/45CzJWBfWaCSQjtg6vDhTMF6iGxXV/4iGoR5WJqLpSKi3kz36lqIbFXR/YYtMkgYUlcp1Ff19LUA2LvkqpWhZJcSEppuEjS9ynCbbn6QqCMG7EGEbmiyF0wyLvAZM6BO1lkbW9JqObLXpW+wShQpaLExuaB4xq3WPJk1FJZbKeiMmaHl+MZynG+yVPYUAzyYO1vDE/QXES7QETDMI9zJI3c6RZqfKss6gt4gZD4aPsCR80K/gvHDCBJx06LHkjPs0R2p1AS2UIT+Q4wwN2SA/sgRMV1QaAJ6Lw0VlkAuZUFQUehAv5ojuUVe/TA3Mm0Cr5QcyW4g5lNMGc6ZgG44kIrKOyANtd7g1iMFhIptPJaFY9erMWqJjIedMqmharJ4E9EfnikcQQTAIZnS2JjZ4vUgz3vSUJoQnmiZwsSgzAsrbFiE8xvXICfuI5NbDSsmWxJGAX88xdKCbBJXt8FiROBgTrzaNTL6iDNQENhnpZdyGG4nysCwY4imH1RjKKM+geWAfUYqJdrEouUwcDmTy76k6jkzy9Yk433FMCo1h+W0rG6YFRLZjWqVisbQUPqpsW97L0wKo/UwR7uEwBTGxarkh1tcVeqQUG4wyrJ1NdH7O3eaiw45jMW64Yo5dR9eqKwAN0xZ63UF2DtncrSkegKZVdgaO7PPbIOs0CFqyb3Vf//pgW1cuN7pojbBLcBVMbivjqmAbXq1peVDoWWBuyj3UnmkKFk/O11/BcGznUqNJQ4cGskqlgWDuY4Mne1qxWK3gHjdAE5OqmimrX3WtvYLmOa91mDeuvCVgZ6BZzeqs5Yh426r/Kd1ttx8HBrCUytVe5zP0CybWU67VqdwC4eilS0le5lE8gwd7Vus2IOHokVUiwiuqvXNYeAYK9zjvN4kFGAwQTTQy26FYuQcPHhgMm4gxVawCCWSMK7/4AtJOdue3i3ANoAdpuAI/P3twm/xYQzOWwoofagsuprGUkbw09/zsVMCuTg5y3WC4hcZTAztyBy5RgV1swmNT2PD//ChDsJO82XBdA03u5KflrDznIdPGVC4ZrSKBgRt92phxkuP8l57SDZy5CGw6swgv+BdPaS0CwlzW3IRQ9IJdqK5rg80Q5B5kFL+Wd6CGi3ANmr6L9eFPzJzZ50Fxx5ndPJzMEsJ1UVuKx2PZ+JQOb3c+8qblgaCJIeGO6F6yl+uuxNdi6h9cXUc4Dt88DPV0wPf8G9sSZmbduGozSb7h5i9jR/DERuDQw86jmNsbHF83+FyIlpaP5EtEzYC7vGK00hUXyW9MdsH94ni0Chw6sRzXZaVsCBDsyvIOYCM6Felkv+0AJPtyETOkceR4N3sOwlsSeyWQVEOzIMzvPb1Dg8oxlYhNuM5XYcgOuDDyGOeqlH6iDQ+4Sc1SDjxy2ls5sMrFBBSxHxxGxjvMWmVhZpACWP6O4pPmyZpEpBjiYmBchC6WDZJbNxCNwsNwJVS40Tm8go4kNsJTKVr4GWcEZoneeyg4QFrcBWQ4YrtewZFTSjUB5KyDkJecp9y5XS6Bg4FPLEdqA9MU8hZ0Cw+QpM5IXaB3xFh1Dgv3Kjsu3SEFYym//ZMh1+BrKZLKZes8QbPVfYJVgo87yFpdSqgFCJiptbZ0h18zMs6oJ0cuUjpZgeyz8i4U6R95meMMAk/NmPVrLNjnSMxdcYs7SPY1qUA9SanvsQ7aGcMl1gfIJQEFay6qkdy0aEh+neThJsJ4u4C2F5NBk6zMCNmdV+7Ve5UnaDHEleT41BdcIlRJxkmRt1fpkjDUV1mqK59UmkYUykTOsQ+1i9D4QHqWHVZ6XeAKnv4kV+3A05rG+K+tOmrg0cXalmIL90cc09DBL+9btSNpR1KMw+7ha3TOblpldkjGg59b9Y/gwwrHRFK6s2Vw0v6K9VffxcU5JSego4yVYomg2eyeuLEyLI1pasT4oE9TmWGu3otiSemdBxCieaRRGP9snVUlSJ7rNFLPtnGmUoPlFZig9657oJPGtaOdjinJHdU4sT0xBLtWvle6xaYJmtALjY+ABworYMNyj+apTyDUzcxBL9tD41sAhtCLXaLUqfjRZFBtNzT1gvjo9gd4n93ZGQY2X8WnIPQ5RUVp1TdWksqk4P0Uei7A8x/IlHk7rNbwvss5htIKkJtstsyLjM9PN1pFhHb8nSJJRbjUqMhrwKo1y0ncK6zTcWDhMpTXPGaDxRVVT64ZRlzTVJYhL+KfNpoHs5z2DNb5wwPrtR2ol5b+TQYgHHWg/eFFBNsb6tsLbtBrqrvV+VfkpvDC5T6WfIt98koytT2vY8KnfHW9TNjVladRQrf5bCn8dqpCdriugR+ndaVkNazS1/tudcENL707nWkYYNEEVynO/MltEj6w3p3Nzcx1DugVNkBDW3Nzp3QF7j8EQ2pD7L3rW4svWr51S2o1IQF0whNZUA+6/sBIuqdnp/tJdBJubQ1mihOQkGigTwf9uHjm/cZfAXrtgFlyn3TTqOAPmeaOJ7xXy/fcpw30PEfXeD3aLTt+xft/QeluJwGWCfspHVr/nOTMsFsflWG58iKYTPO0PicV201REdSsat1mtYi/Mg34HTFTuR2Yj+prpFHZY7t+LJt/esUCzmabnWFcxz/qFw8o59aNnN7PPVn2VudxdSRYDto7JXMWWXWL0q3ZXBrKo27vvSvSIvAdaviO+eBZ5pzCl78Mm1Dg7oEFPfiCj45OxNp3mNqbaG49/OamNuWM9X9t4M6Vsx6/PcrkJNuLnc7mT91PHtnX+n9rkG5/zudp/PzxhzeLo8eebe3ph9oLAJlr5Y7Ggz3/fonYI5kiqNKKanS1+ykzMJWZ20JNmEdv5FmOqy6JFhVX8NrHJMv8rdh+G2G4+M7Lb9uaN7lBhXcsTksncjudxBX2WAdv25mXBR4VN9mVCZ8x8KfqfWNDTVNmefL3U+6mQ0sXJ4ocszqYHHor+fDeft2lQbX+9Qk4SqOL1RCbL/FEMfCxiu9wEttuTD1e6Hty8RfbXBGTyt+EPLuj65SaY3RDVMFs5ZBM4Y+Z6OJhtt6uvAGxbH+b1wsiWLV2PDeaG+uHS9auvRBOTrXNENdixB5UeOzLKYpjn23Yjw/Zk86YYEAKHadxheljkCISbP580UG59v8LDVag/ZhdsRxyHDCWJ4duwDTd+tvzk+70IpnLIxssZd25/cp9whxvHbluXhehUFtkYMT/zZySD2UrP6unzqGhbV2MYq0f2LSpZREf0qKDfREHbvhkfa4xuJo/hiC5a8UNors1JsDBZxNEsQkQMkj4fbvL2+FKPEAWDyf6I4oxyiKF5pAr69xBcW+nJzGWTfcmE3qQuX0zenn51a0/7HCJvCqOPob3xlhwxnArpW9zxgz55I5ZCZyATdrCe0vrn0VyTdq+ewobGMLlvKKX1zeFc34lxhSXLfCsSa3I42aZOqg2sYojiDsrpCRkMa5g3ftbJtYF1OxkamQlyIbLACPIk1IwrilA+PJJMJhIQPSrMBkX9KwLjV5+Kn0bZTM58IsuFyK4Guc51wo1gjbQZoUDvkz6QOG4RDIgeFa+H3tNL3l5Yev/08wqgEaxhZLIMwjXgjMQyjgEVdy4CMmL5gnDccOQfzR7rMK3Y+jhAlvlGcvzyK+0F+04+IroqFv/0hxB5YPWBpPSvLtc2JBeuNl5fuGhy5ts1uTwqQPNunf8DLBhS8U/OQpPlzAVM1HDl6WXALWEV018uMpnMxV9QQcOj+R4X6SQxWMXizk66SOFvmHZSxktwT7QbnKVAhVU4pxI6GKgbPshOw6ZBXV+k5IkUVbDLcTrr9yCveTuvZ/0a5KVvUxmd6cuqftz8gGA44D+Gmokx1SUaxXTWLwGhe49/yNiBfHF7ZvMH7GLWEP0jBkVr6vIjBkWrDPdDBkUc76/mh+reOCL8uHEawi1d/h+CWgV2MPSXAQAAAABJRU5ErkJggg==" class="avatar">
+        <h1 id="LoginBoxHeader">Login Here</h1>
+        <form>
+            <p>Username</p>
+            <input type="text" name="" placeholder="Username">
+            <p>Password</p>
+            <input type="password" name="" placeholder="Password"><br>
+            <button type="submit" id="submitLogin" value="Login">Login</button><br><br>
+            <a href=""> Lost Your Password?</a><br>
+            <a href=""> Don't Have An Account?</a><br>
+        </form>
+    </div>
     <div class="images">
-    <img id="hospital" src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8aG9zcGl0YWx8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60" alt="Hospital Image"
-     >
+<!--    <img id="hospital" src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8aG9zcGl0YWx8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60" alt="Hospital Image"-->
+<!--     >-->
 
     </div>
     </div>
