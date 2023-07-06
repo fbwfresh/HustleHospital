@@ -1,3 +1,5 @@
 # ATA-Learn-And-Be-Curious-Project
 
-Follow the instructions in the course for completing the group LBC project.
+Hustle Hospital creates a database for doctors and patients and enables them to make appointments
+
+adding this to see if push went through

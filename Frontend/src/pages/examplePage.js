@@ -29,6 +29,7 @@ class ExamplePage extends BaseClass {
     async renderExample() {
         let resultArea = document.getElementById("result-info");
 
+
         const example = this.dataStore.get("example");
 
         if (example) {

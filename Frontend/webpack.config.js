@@ -8,7 +8,12 @@ module.exports = {
     usedExports: true
   },
   entry: {
-    examplePage: path.resolve(__dirname, 'src', 'pages', 'examplePage.js'),
+
+    appointmentPage: path.resolve(__dirname, 'src', 'pages', 'appointmentPage.js'),
+    patientPage: path.resolve(__dirname, 'src', 'pages', 'patientPage.js'),
+    HustleHospitalMainPage: path.resolve(__dirname, 'src', 'pages', 'HustleHospitalMainPage.js'),
+    doctorPage: path.resolve(__dirname,'src','pages','doctorPage.js'),
+
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -18,19 +23,52 @@ module.exports = {
     https: false,
     port: 8080,
     open: true,
-    openPage: 'http://localhost:8080',
-    // diableHostChecks, otherwise we get an error about headers and the page won't render
+
+
+
+    openPage: 'http://localhost:8080/HustleHospital.html',
+
+
+
+    // disableHostChecks, otherwise we get an error about headers and the page won't render
+
     disableHostCheck: true,
     contentBase: 'packaging_additional_published_artifacts',
     // overlay shows a full-screen overlay in the browser when there are compiler errors or warnings
-    overlay: true
+
+    overlay: true,
+        proxy: [
+          {
+            context: [
+              '/'
+            ],
+            target: 'http://localhost:5001'
+          }
+        ]
+
   },
+
   plugins: [
     new HtmlWebpackPlugin({
-      template: './src/index.html',
-      filename: 'index.html',
-      inject: false
+        template: './src/patients.html',
+        filename: 'patients.html',
+        inject: false
     }),
+    new HtmlWebpackPlugin({
+      template: './src/DoctorPage.html',
+      filename: 'DoctorPage.html',
+    }),
+    new HtmlWebpackPlugin({
+          template: './src/appointmentPage.html',
+          filename: 'appointmentPage.html',
+
+          inject: false
+        }),
+    new HtmlWebpackPlugin({
+          template: './src/HustleHospital.html',
+          filename: 'HustleHospital.html',
+          inject: false
+        }),
     new CopyPlugin({
       patterns: [
         {
@@ -41,4 +79,5 @@ module.exports = {
     }),
     new CleanWebpackPlugin()
   ]
+
 }
